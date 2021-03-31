@@ -1,3 +1,4 @@
+<%@page import="com.koreait.app.futsalDAO.FutsalDAO"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -116,7 +117,17 @@
 	<script src="${pageContext.request.contextPath}/assets/js/weatherSetter.js"></script>
 	
 <script>
+
 $(document).ready(function(){
+<%
+	FutsalDAO fdao = new FutsalDAO();
+	String getDangi = fdao.getDangi();
+	String getJungi = fdao.getJungi();
+	String updateTime = fdao.updateTime();
+	request.setAttribute("getDangi", getDangi);
+	request.setAttribute("getJungi", getJungi);
+	request.setAttribute("updateTime", updateTime);
+%>
 	var getdangi = ${getDangi};
 	var getjungi = ${getJungi};
 	var getupdateTime = ${updateTime};

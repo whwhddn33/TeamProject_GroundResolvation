@@ -17,16 +17,6 @@ public class FutsallistAction implements Action{
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		ActionForward forward= new ActionForward();
-		FutsalDAO fdao = new FutsalDAO();
-		
-		String getDangi = fdao.getDangi();
-		String getJungi = fdao.getJungi();
-		String updateTime = fdao.updateTime();
-		 
-		
-		request.setAttribute("getDangi", getDangi);
-		request.setAttribute("getJungi", getJungi);
-		request.setAttribute("updateTime", updateTime);
 		
 		forward.setRedirect(false);
 		forward.setPath("/app/futsal/futsallist.jsp");

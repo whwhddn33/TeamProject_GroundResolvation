@@ -146,8 +146,8 @@ public class FutsalDAO {
 
 	public List<FutsalBean> getgroundlist(int tryCount) {
 		
-		int startNum = (6*tryCount)-5;
-		int endNum = (startNum+5);
+		int startNum = (10*tryCount)-9;
+		int endNum = (startNum+9);
 		System.out.print("startNum : ");
 		System.out.println(startNum);
 		System.out.print("endNum : ");
