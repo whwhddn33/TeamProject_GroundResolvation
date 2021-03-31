@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Team">
+	<insert id="join" parameterType="teamBean">
+		INSERT INTO TBL_TEAM
+		VALUES(TEAMNO_SEQ.NEXTVAL,#{teamName},#{captainName},#{teamTel},#{teamLocal},#{teamFoundYear},
+		#{teamLevel},#{startAge},#{stopAge},#{uniformColor},#{uniformAway},#{controlLabel})
+	</insert>
+	<select id="checkname" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM TBL_TEAM WHERE TEAMNAME=#{teamnName}
+	</select>
+</mapper>
