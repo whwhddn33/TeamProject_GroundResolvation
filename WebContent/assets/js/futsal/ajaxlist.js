@@ -1,15 +1,29 @@
+var tryCount = 1;// 함수호출횟수
+var tags = '';
+var lastsign = 0;
+console.log(tryCount);
+
 $(document).ready(function(){
-	var tryCount = 1;// 함수호출횟수
-	var tags = '';
-	callAjax(tryCount,tags);
+	callAjax();
 	$(".custom_calendar_table").on("click", "td", function () {
 		tryCount = 1;
+		console.log();
 		tags = '';
-		callAjax(tryCount,tags);
+		lastsign = 0;
+		if (lastsign ===0)callAjax();
 	});
-	
-	
-	function callAjax(tryCount){
+	$(window).scroll(function(){
+		var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
+		console.log(scrollBottom);
+		if(scrollBottom ==0){
+			console.log("0입니다 : "+scrollBottom);
+			if (lastsign ===0)callAjax();
+			console.log("스크롤시 : "+tryCount);
+		}
+	})
+});
+
+	function callAjax(){
 		//연월
 		var year = new Date().getFullYear(),
 			month = new Date().getMonth() + 1;
@@ -31,15 +45,20 @@ $(document).ready(function(){
 			data: {"selectDate":selectDate , "tryCount" : tryCount},
 			dataType:"JSON",
 		})
-		
 		.done(function(data){
 			console.log(tryCount);
 			console.log("통신성공");
 			console.log(data);
 			tagsStack(data,tags);
 			tryCount++;
+			console.log("통신성공시 "+tryCount);
+			console.log("json 로그 : " + data.json.length);
+			if(data.json.length == 0 && lastsign ===0){
+				tags += "끝까지 다봤어요!<a href=\"#\">[맨위로]</a>"
+				lastsign ++;
+				$(".content").html(tags);
+			}
 		})
-		
 		.fail(function(xhr,error){
 			console.log(tryCount);
 			console.log("통신실패");
@@ -47,11 +66,10 @@ $(document).ready(function(){
 			console.log("code:"+xhr.status+"\n"+"message:"+xhr.responseText+"\n"+"error:"+error);
 		})
 	}
-	
-	function tagsStack(data,tags) {
+	function tagsStack(data) {
 		for(i = 0; i <data.json.length; i++){
 			tags += '<div id = '+((tryCount*6-5)+i)+' style=\"background-color : aqua\" \"color : black\">';
-			tags += "content"+((tryCount*6-5)+i)+"<br>";
+			tags += "content"+((tryCount*10-9)+i)+"<br>";
 			tags += "번호 : "+data.json[i].groundnum+"<br>";
 			tags += "구장이름 : "+data.json[i].groundname+"<br>";
 			tags += "주소 : "+data.json[i].groundlocation+"<br>";
@@ -60,6 +78,5 @@ $(document).ready(function(){
 			tags += "</div>"+"<br>";
 			$(".content").html(data.date.date+tags);
 		}
-		console.log(tryCount);
+		console.log("stacktag : "+ tryCount);
 	}
-});
