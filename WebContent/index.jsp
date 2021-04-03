@@ -8,12 +8,8 @@
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/assets/css/main.css" />
-<noscript>
-	<link rel="stylesheet"
-		href="<%=request.getContextPath()%>/assets/css/noscript.css" />
-</noscript>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+<noscript>	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
 
@@ -39,29 +35,32 @@
 								<li><a href="#">Option Three</a></li>
 								<li><a href="#">Option Four</a></li>
 							</ul></li>
-					</ul></li>
+					</ul>
+				</li>
 				<li><a href="#" class="submenu fa-angle-down">Board</a>
 					<ul>
-						<li><a href="/board/boardList.bo?num=1">REVIEW</a></li>
-						<li><a href="/board/boardList.bo?num=2">1:1 문의하기</a></li>
-						<li><a href="/board/boardList.bo?num=3">FAQ</a></li>
-					</ul></li>
+						<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=1">REVIEW</a></li>
+						<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
+						<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
+					</ul>
+				</li>
 				<li><a href="#" class="submenu fa-angle-down">Admin</a>
 					<ul>
-						<li><a href="/admin/board.bo">게시판관리</a></li>
-						<li><a href="/admin/boardlist.bo">게시물관리</a></li>
-					</ul></li>
+						<li><a href="${pageContext.request.contextPath}/admin/board.bo">게시판관리</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/boardlist.bo">게시물관리</a></li>
+					</ul>
+				</li>
 				<!-- <li><a href="elements.html">Elements</a></li> -->
 
 
 				<c:choose>
 					<c:when test="${login_session ne null}">
-						<li><a href="/app/user/logOut.me" class="button"
+						<li><a href="${pageContext.request.contextPath}/app/user/logOut.me" class="button"
 							id="logOutBtn">Log Out</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="/app/user/joinView.me" class="button">Sign Up</a></li>
-						<li><a href="/app/user/loginView.me" class="button">Login</a></li>
+						<li><a href="${pageContext.request.contextPath}/app/user/joinView.me" class="button">Sign Up</a></li>
+						<li><a href="${pageContext.request.contextPath}/app/user/loginView.me" class="button">Login</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
@@ -102,13 +101,12 @@
 			도움말</a>
 	</div>
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.dropotron.min.js"></script>
-	<script src="assets/js/jquery.scrollex.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 </body>
 </html>

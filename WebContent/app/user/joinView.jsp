@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8" http-equiv="Content-Type" content="text/html">
 <title>Insert title here</title>
-<link href="/assets/css/user/common.css" type="text/css" rel="stylesheet" />
-<link href="/assets/css/user/joinView.css" type="text/css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/assets/css/user/common.css" type="text/css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/assets/css/user/joinView.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="doc-container">
     <div class="join-logo-title">회원가입</div>
@@ -17,7 +17,7 @@
         <li id="tab-btn-company" class="tab-item no-seleted-item">기업회원</li>
       </ul>
 
-      <form class="form-container"  action="/app/user/UserJoinOk.me" method="post" name="joinform">
+      <form class="form-container"  action="${pageContext.request.contextPath}/app/user/UserJoinOk.me" method="post" name="joinform">
         <p class="input-wrapper">
           <label><input type="text" name="userid" placeholder="아이디" class="input-text" onkeyup="checkId();"></label>  
           <span id="checkText" style="color:red; font-size:14px;"></span>
@@ -58,5 +58,5 @@
     </div>
   </body>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script src="/assets/js/user/joinView.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/user/joinView.js"></script>
 </html>

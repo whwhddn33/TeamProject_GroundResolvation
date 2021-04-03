@@ -5,8 +5,8 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-	<link href="/assets/css/user/common.css" type="text/css" rel="stylesheet" />
-	<link href="/assets/css/user/loginView.css" type="text/css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/assets/css/user/common.css" type="text/css" rel="stylesheet" />
+	<link href="${pageContext.request.contextPath}/assets/css/user/loginView.css" type="text/css" rel="stylesheet" />
 	<title>Insert title here</title>
 </head>
 <body class='doc_container'>
@@ -14,7 +14,7 @@
       <i class="far fa-user-circle fa-3x"></i>
     </div>
     <strong class='login_tit'>LOGIN</strong>
-    <form class='form_wrap'  action="/app/user/UserLoginOk.me" method="post" name="loginform">
+    <form class='form_wrap'  action="${pageContext.request.contextPath}/app/user/UserLoginOk.me" method="post" name="loginform">
       <div class='input_section'>
         <span class='input_icon'>
           <i class="far fa-user-circle fa-3x"></i>
@@ -50,9 +50,9 @@
 
     <div>
       <p class='accunt_desc'>Not a member?</p>
-      <a href="/app/user/joinView.me" class="link_account">Create account</a>
+      <a href="${pageContext.request.contextPath}/app/user/joinView.me" class="link_account">Create account</a>
     </div>
   </body>
   <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-  <script src="/assets/js/user/loginView.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/js/user/loginView.js"></script>
 </html>

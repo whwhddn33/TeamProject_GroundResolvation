@@ -15,7 +15,8 @@ $(document).ready(function(){
 	$(window).scroll(function(){
 		var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
 		console.log(scrollBottom);
-		if(scrollBottom ==0){
+		if(scrollBottom <=30){
+			
 			console.log("0입니다 : "+scrollBottom);
 			if (lastsign ===0)callAjax();
 			console.log("스크롤시 : "+tryCount);
@@ -54,7 +55,7 @@ $(document).ready(function(){
 			console.log("통신성공시 "+tryCount);
 			console.log("json 로그 : " + data.json.length);
 			if(data.json.length == 0 && lastsign ===0){
-				tags += "끝까지 다봤어요!<a href=\"#\">[맨위로]</a>"
+				tags += "<div id = endlist><a href=\"#\">끝까지 다봤어요!↑(click!)</a></div>"
 				lastsign ++;
 				$(".content").html(tags);
 			}
@@ -68,15 +69,19 @@ $(document).ready(function(){
 	}
 	function tagsStack(data) {
 		for(i = 0; i <data.json.length; i++){
-			tags += '<div id = '+((tryCount*6-5)+i)+' style=\"background-color : aqua\" \"color : black\">';
+			tags += '<div class = futsallist id = '+((tryCount*6-5)+i)+'>';
+			tags += "<div><img alt=\"이미지\" src=\"\"></div>"
+			tags += "<div>"
 			tags += "content"+((tryCount*10-9)+i)+"<br>";
 			tags += "번호 : "+data.json[i].groundnum+"<br>";
 			tags += "구장이름 : "+data.json[i].groundname+"<br>";
-			tags += "주소 : "+data.json[i].groundlocation+"<br>";
+			tags += "주소 : "+data.json[i].groundaddr+"<br>";
+			console.log()
 			tags += "가격 : "+data.json[i].groundfee+"<br>";
-			tags += "<input type = button value = 예약하기 style = \"color : black\"></input>";
+			tags += "<input class = listbutton type = button value = 예약하기></input>";
+			tags += "</div>"
 			tags += "</div>"+"<br>";
-			$(".content").html(data.date.date+tags);
+			$(".content").html("<div id = toDays>"+data.date.date+"</div>"+tags);
 		}
 		console.log("stacktag : "+ tryCount);
 	}

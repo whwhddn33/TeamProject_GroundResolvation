@@ -111,10 +111,10 @@ function sendit() {
 		return false;
 	}
 	var checkText = document.getElementById("checkText");
-	if (checkText.innerHTML != "사용할 수 있는 아이디입니다.") {
+/*	if (checkText.innerHTML != "사용할 수 있는 아이디입니다.") {
 		alert("아이디 중복검사를 확인해주세요!");
 		return false;
-	}
+	}*/
 	if (joinform.userpw.value == "" || joinform.userpw.value == null) {
 		alert("비밀번호를 입력하세요.");
 		joinform.userpw.focus();

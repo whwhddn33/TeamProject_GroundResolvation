@@ -1949,7 +1949,6 @@ input, select, textarea {
 	button,
 	.button {
 		background-color: transparent;
-		color: #fbfbfb !important;
 	}
 
 		input[type="submit"]:hover,
@@ -4675,6 +4674,3 @@ input, select, textarea {
 		}
 		
 		
-		#calendarh3, #maph3, #weatherh3{
-		color : #fbfbfb;
-		}

@@ -1,0 +1,169 @@
+@charset "UTF-8";
+@import url(fontawesome-all.min.css);
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600|Raleway:500,700,800");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Roboto&display=swap');
+#main{
+	font-family: 'Roboto', sans-serif;
+}
+
+#futsalinner{
+}
+
+#futsalweather{
+	font-family: 'Roboto', sans-serif;
+	font-size : 1em;
+	text-align :center;
+	padding: 0;
+	height: 100px;
+	
+
+}
+#futsalweather > table{
+	max-width : 1560px;
+	box-shadow: 20px 20px 25px 2px gray;
+	border-collapse: collapse;
+  	border-radius: 10px;
+  	overflow: hidden;
+	margin: 0px auto;
+	width: 90vw;
+	height: 15px !important;
+	
+}
+#futsalweather > table > tbody > tr:nth-child(1){
+	background-color: #3e3e3e;	
+	opacity : 1.0;
+	color : white;
+}
+#futsalweather > table > tbody > tr{
+	background-color: rgb(62, 62, 62, 0.2);
+	color : black;
+	height: 1vh;
+}
+#futsalweather > table > tbody > tr > td{
+	
+	height:5px !important;
+	width:20px;
+	padding: 0;
+}
+/*--------------------------------- futsalsidebar------------------------- */
+
+#futsalsidebar{
+	padding-top : 30px;
+	font-size : 15px;
+	position: sticky;
+	top: 100px;
+	width : 50%;
+	background-color: rgba( 255, 255, 255, 0);/* 투명 */
+	color: black;
+}
+
+#futsalsidebar > section{
+	padding : 10px;
+	border-radius: 10px ;
+	background-color: rgba( 255, 255, 255);/* 흰색 */
+	box-shadow: 20px 20px 25px 2px gray;
+}
+#futsalsidebar > section > table > tbody > tr > td{
+	width: 100px !important;
+	font-size: 15px;
+}
+
+#futsalsidebar > section > div{
+	margin: 0px auto;
+	position: relative;
+	width: 100%;
+}
+
+#mapParent:after{
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+
+#mapdiv{
+	position : absolute;
+	border: 1px solid black;
+	width: 100%;
+	height: 82%;	
+}
+
+#mapdiv > div{
+	width : 100%;
+	height : 100%;	
+}
+#map{
+	width : 100%;
+	height :100%;
+}
+
+#calendarh3:after, #maph3:after, #weatherh3:after{
+	display: none;
+}
+#calendarh3, #maph3, #weatherh3{
+	font-size : 40px;
+	font-family: 'Jua', sans-serif;
+	color : black;
+	padding: 10px;
+	margin: 0;
+}
+
+
+/*--------------------------------- content------------------------- */
+#futsalcontent{
+	width : 50% !important;
+	padding-left: 0 0 0 2em !important;
+	
+}
+
+.futsallist{
+	background-color: rgba( 255, 255, 255);/* 흰색 */
+	box-shadow: 20px 20px 25px 2px gray;
+	border-radius: 10px ;
+	color : black;
+	display: flex;
+}
+.futsallist:hover{
+	transition: 3s;
+	background-color: #c0c0c0;
+}
+
+.futsallist > div{
+	margin : 20px;
+	margin-left : 20px;
+	flax : 1;
+}
+.futsallist > div:nth-child(1){
+	border: 1px solid #48BAE4;
+	width: 300px;
+	height: 200px;
+}
+.futsallist  > div:nth-child(2){
+	margin-left : 20px;
+}
+.listbutton{
+    border-radius: 15px !important;
+	border: 1px solid #48BAE4 !important ;
+ 	color : black;
+}
+#toDays{
+	text-shadow: 5px 5px 10px gray;
+	color : black;
+	font-family: 'Jua', sans-serif;
+	width : 100%;
+	text-align :center;
+	padding-top : 1em;
+	padding-bottom : .5em;
+	margin: 0px auto;
+	font-size: 50px;
+}
+#endlist{
+	color : black;
+	font-family: 'Jua', sans-serif;
+	width : 100%;
+	text-align :center;
+	padding-top : 1em;
+	padding-bottom : .5em;
+	margin: 0px auto;
+	font-size: 50px;
+}

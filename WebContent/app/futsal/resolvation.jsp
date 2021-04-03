@@ -18,11 +18,11 @@
 	<link rel="stylesheet" href="../../assets/css/noscript.css" />
 </noscript>
 </head>
-<body id = "futsalbody"class="is-preload">
+<body class="is-preload">
 
 
 	<!-- Header -->
-		<header id="header">
+	<header id="header">
 		<h1>
 			<a href="index.html">Slate <span>by Pixelarity</span></a>
 		</h1>
@@ -71,67 +71,58 @@
 				</c:choose>
 			</ul>
 		</nav>
-		
 	</header>
 
 	<!-- Main -->
-	
-	<div id = futsalweather>
-				<table>
-				<%
-					Calendar cal = Calendar.getInstance();
-					int i = 1;
-				%>
-				<tr>
-				<td></td>
-					<c:forEach var="i" begin="0" end="6" step="1">
-						<td>
-							<%=cal.getTime().getDate()%>
-						<br> 
-							<%cal.add(Calendar.DATE, i);%>
-						</td>
-					</c:forEach>
-				</tr>
-				<tr>
-				<td>날씨</td>
-					<c:forEach var="i" begin="0" end="6" step="1">
-						<td id ="SKY${i}"></td>
-					</c:forEach>
-				</tr>
-				<tr>
-				<td>강수확률</td>
-					<c:forEach var="i" begin="0" end="6" step="1">
-						<td id ="POP${i}"></td>
-					</c:forEach>
-				</tr>
-				</table>
-	</div>
-	
+	<c:forEach items="i"></c:forEach>
 	<section id="main" class="wrapper sidebar left">
-		<div id="futsalinner" class="inner">
+		<div class="inner">
 			<!-- Content -->
-			<div id = "futsalcontent" class="content">
+			<div class="content">
 				javarequest today : 
 			</div>
 			<!-- Sidebar -->
-			<div id = "futsalsidebar" class="sidebar" style="text-align: center; ">
+			<div class="sidebar" style="text-align: center; ">
+				<section >
+					<h3 id = "weatherh3">날씨</h3>
+					<table style="font-size: 5px;">
+						<%
+							Calendar cal = Calendar.getInstance();
+							int i = 1;
+						%>
+							<tr>
+							<td></td>
+								<c:forEach var="i" begin="0" end="6" step="1">
+									<td><%=cal.getTime().getDate()%> <br> 
+									<%cal.add(Calendar.DATE, i);%>
+									</td>
+								</c:forEach>
+							</tr>
+							<tr>
+							<td>날씨</td>
+								<c:forEach var="i" begin="0" end="6" step="1">
+									<td id ="SKY${i}"></td>
+								</c:forEach>
+							</tr>
+							<tr>
+							<td>강수확률</td>
+								<c:forEach var="i" begin="0" end="6" step="1">
+									<td id ="POP${i}"></td>
+								</c:forEach>
+							</tr>
+					</table>
+							<p style="font-size: 5px;">날씨 : 오전기준 <br>지역 : 서울/경기</p>
+				</section>
+				<hr />
 				<section>
 					<h3 id = "calendarh3">달력</h3>
 					<div id="calendarForm" style="font-size: 8px;"></div>
 				</section>
 				<hr />
-				
 				<section>
 					<h3 id = "maph3">지도</h3>
-						<div id = mapParent>
-							<div id = mapdiv>
-								<div>
-									<div id="map"></div>
-								</div>
-							</div>
-						</div>
+					
 				</section>
-				
 			</div>
 		</div>
 	</section>
@@ -146,32 +137,22 @@
 	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/futsal/calenderMaker.js"></script>
-	<script src="${pageContext.request.contextPath}/assets/js/futsal/ajaxlist.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/futsal/weatherSetter.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=563cdd8507ac7e3ee9a21bace94dd5e2"></script>
 	<script>
-	var mapContainer = document.getElementById('map'),
-	    mapOption = { 
-	        center: new kakao.maps.LatLng(37.5642135, 127.001698),
-	        level: 10
-	    };
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	$(document).ready(function(){
+	<%
+		FutsalDAO fdao = new FutsalDAO();
+		String getDangi = fdao.getDangi();
+		String getJungi = fdao.getJungi();
+		String updateTime = fdao.updateTime();
+		request.setAttribute("getDangi", getDangi);
+		request.setAttribute("getJungi", getJungi);
+		request.setAttribute("updateTime", updateTime);
+	%>
+		var getdangi = ${getDangi};
+		var getjungi = ${getJungi};
+		var getupdateTime = ${updateTime};
+		weatherSetter(getdangi,getjungi,getupdateTime);
+	});
 	</script>
-<script>
-$(document).ready(function(){
-<%
-	FutsalDAO fdao = new FutsalDAO();
-	String getDangi = fdao.getDangi();
-	String getJungi = fdao.getJungi();
-	String updateTime = fdao.updateTime();
-	request.setAttribute("getDangi", getDangi);
-	request.setAttribute("getJungi", getJungi);
-	request.setAttribute("updateTime", updateTime);
-%>
-	var getdangi = ${getDangi};
-	var getjungi = ${getJungi};
-	var getupdateTime = ${updateTime};
-	weatherSetter(getdangi,getjungi,getupdateTime);
-});
-</script>
 </html>
