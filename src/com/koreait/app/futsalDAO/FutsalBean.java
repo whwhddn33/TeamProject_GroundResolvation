@@ -1,10 +1,10 @@
 package com.koreait.app.futsalDAO;
 
 public class FutsalBean {
-	private int groundnum;
-	private String groundname;
-	private String groundlocation;
-	private int groundfee;
+	private int groundnum;//구장번호
+	private String groundname;//이름
+	private String groundaddr;//주소
+	private int groundfee;//요금
 	
 	
 	public int getGroundnum() {
@@ -20,10 +20,10 @@ public class FutsalBean {
 		this.groundname = groundname;
 	}
 	public String getGroundlocation() {
-		return groundlocation;
+		return groundaddr;
 	}
 	public void setGroundlocation(String groundlocation) {
-		this.groundlocation = groundlocation;
+		this.groundaddr = groundlocation;
 	}
 	public int getGroundfee() {
 		return groundfee;

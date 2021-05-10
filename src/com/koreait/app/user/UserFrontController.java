@@ -38,45 +38,81 @@ public class UserFrontController extends HttpServlet {
 		ActionForward forward = null;
 
 		switch (command) {
-			case "/app/user/joinView.me": // È¸¿ø°¡ÀÔ ÆäÀÌÁö ÀÌµ¿ 
+			case "/app/user/joinIndex.me": // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ 
 				forward = new ActionForward();
-				forward.setPath(request.getContextPath()+"/app/user/joinView.jsp");
+				forward.setPath(request.getContextPath()+"/app/user/joinIndex.jsp");
+				forward.setRedirect(true);
+				break;
+			case "/app/user/joinIndividualView.me": // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ 
+				forward = new ActionForward();
+				forward.setPath(request.getContextPath()+"/app/user/joinIndividualView.jsp");
+				forward.setRedirect(true);
+				break;
+			case "/app/user/joinEnterpriseView.me": // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ 
+				forward = new ActionForward();
+				forward.setPath(request.getContextPath()+"/app/user/joinEnterpriseView.jsp");
 				forward.setRedirect(true);
 				break;
 				
-			case "/app/user/CheckId.me": // È¸¿ø°¡ÀÔ ½Ã, ¾ÆÀÌµð Áßº¹ Ã¼Å©
+			case "/app/user/CheckId.me": // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½ Ã¼Å©
 				try {
 					forward = new CheckId().execute(request, response);
 				} catch (Exception e1) {
-					System.out.println("/user/CheckId ¿À·ù");
+					System.out.println("/user/CheckId ï¿½ï¿½ï¿½ï¿½");
 				}
 				break;
 
-			case "/app/user/UserJoinOk.me": // È¸¿ø°¡ÀÔ ½ÇÇà
+			case "/app/user/UserJoinOk.me": // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				try {
 					forward = new UserJoinOkAction().execute(request, response);
 				} catch (Exception e) {
-					System.out.println("/app/user/UserJoinOk ¿À·ù");
+					System.out.println("/app/user/UserJoinOk ï¿½ï¿½ï¿½ï¿½");
+					System.out.println(e);
+				}
+				break;
+			case "/app/user/EnterpriseUserJoinOk.me": // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				try {
+					forward = new EnterpriseUserJoinOkAction().execute(request, response);
+				} catch (Exception e) {
+					System.out.println("/app/user/UserJoinOk ï¿½ï¿½ï¿½ï¿½");
 					System.out.println(e);
 				}
 				break;
 	
-			case "/app/user/loginView.me": // ·Î±×ÀÎ ÆäÀÌÁö ÀÌµ¿
+			case "/app/user/loginIndex.me": // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 					forward = new ActionForward();
-					forward.setPath(request.getContextPath()+"/app/user/loginView.jsp");
+					forward.setPath(request.getContextPath()+"/app/user/loginIndex.jsp");
 					forward.setRedirect(true);
 				break;
+			case "/app/user/loginView.me": // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
+				forward = new ActionForward();
+				forward.setPath(request.getContextPath()+"/app/user/loginView.jsp");
+				forward.setRedirect(true);
+				break;
+			case "/app/user/enterpriseLoginView.me": // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
+				forward = new ActionForward();
+				forward.setPath(request.getContextPath()+"/app/user/enterpriseLoginView.jsp");
+				forward.setRedirect(true);
+				break;
 				
-			case "/app/user/UserLoginOk.me": // ·Î±×ÀÎ ½ÇÇà
+			case "/app/user/UserLoginOk.me": // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				try {
 					forward = new UserLoginOkAction().execute(request, response);
 				} catch (Exception e) {
-					System.out.println("/app/user/UserLoginOk ¿À·ù");
+					System.out.println("/app/user/UserLoginOk ï¿½ï¿½ï¿½ï¿½");
+					System.out.println(e);
+				}
+				break;
+			case "/app/user/EnterpriseUserLoginOk.me": // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				try {
+					forward = new EnterpriseUserLoginOkAction().execute(request, response);
+				} catch (Exception e) {
+					System.out.println("/app/user/UserLoginOk ï¿½ï¿½ï¿½ï¿½");
 					System.out.println(e);
 				}
 				break;
 			
-			case "/app/user/logOut.me": // ·Î±×¾Æ¿ô
+			case "/app/user/logOut.me": // ï¿½Î±×¾Æ¿ï¿½
 				request.getSession().invalidate(); 
 				forward = new ActionForward();
 				forward.setRedirect(true);

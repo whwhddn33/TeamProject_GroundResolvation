@@ -10,12 +10,8 @@
 <link href="${pageContext.request.contextPath}/assets/css/user/joinView.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="doc-container">
-    <div class="join-logo-title">회원가입</div>
+    <div class="join-logo-title">개인회원 가입</div>
     <div class='join-form-wrapper'>
-      <ul class="join-form-tab">
-        <li id="tab-btn-personal" class="tab-item seleted-item">개인회원</li>
-        <li id="tab-btn-company" class="tab-item no-seleted-item">기업회원</li>
-      </ul>
 
       <form class="form-container"  action="${pageContext.request.contextPath}/app/user/UserJoinOk.me" method="post" name="joinform">
         <p class="input-wrapper">

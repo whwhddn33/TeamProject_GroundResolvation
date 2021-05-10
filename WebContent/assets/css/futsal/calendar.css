@@ -10,13 +10,16 @@
 }
 
 .custom_calendar_table thead.cal_date th {
-	font-size: 15px !important;
+	padding : 0;
+	font-size: 2em !important;
     color : black;
     text-align: center;
 }
 
 .custom_calendar_table thead.cal_date th button {
 
+	font-size : 2em;
+	padding : 0;
     background: none;
     border: none;
 }

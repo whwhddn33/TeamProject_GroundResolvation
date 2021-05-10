@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.koreait.action.ActionForward;
 
@@ -58,8 +59,60 @@ import com.koreait.action.ActionForward;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}else if(command.equals("/futsalFrontController/groundregist.fu")) {
+				try {
+					System.out.println("컨트롤러/구장등록");
+					forward = new GroundRegistAction().execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(command.equals("/futsalFrontController/groundregistpage.fu")) {
+				try {
+					System.out.println("컨트롤러/구장등록페이지이동");
+					forward = new ActionForward();
+					forward.setPath("/app/futsal/groundregist.jsp");
+					forward.setRedirect(false);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(command.equals("/futsalFrontController/registlistLoad.fu")) {
+				try {
+					System.out.println("loadlist실행");
+					forward = new registlistLoadAction().execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(command.equals("/futsalFrontController/registlistpage.fu")) {
+				try {
+					System.out.println("컨트롤러/구장등록리스트페이지이동");
+					forward = new ActionForward();
+					forward.setPath("/app/futsal/registlist.jsp");
+					forward.setRedirect(false);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
+//			/futsalFrontController/registlistLoad.fu
 			
+			
+			
+			//풋살장에약페이지로 이동시 구장 정보 보여주는 컨트롤러
+			else if(command.equals("futsal/reservation.fu")) {
+				try {
+					forward= new FutsalreservationAction().execute(request, response);
+				} catch (Exception e) {
+					System.out.println("풋살예약페이지 구장정보 가져오는 컨트롤러");
+					e.printStackTrace();
+				}
+			}
+			else if (command.equals("futsal/reservationOk.fu")) {
+				try {
+					forward=new FutsalrservationOk().execute(request, response);
+				} catch (Exception e) {
+					System.out.println("풋살예약 페이지에서 예약하기 눌렀을 시");
+					e.printStackTrace();
+				}
+			}
 			if(forward!=null) {
 				if(forward.isRedirect()) {
 					//redirect 방식

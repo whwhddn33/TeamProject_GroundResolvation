@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,43 +12,46 @@
 	<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
-
+		<c:set var="userid" value="${session_id.getUserid()}"/>
+		<c:set var="list" value="${requestScope.BoardList}" />
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="/index.jsp">Slate <span>by Pixelarity</span></a></h1>
+				<a href="/index.jsp"><img src="/images/logo2.png" class="logo2"></span></a>
 				<nav id="nav">
 					<ul>
-						<li><a href="/index.jsp">Home</a></li>
-						<li>
-							<a href="#" class="submenu fa-angle-down">Page Layouts</a>
+						<li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+						<li><a href="#" class="submenu fa-angle-down">Page Layouts</a>
 							<ul>
-								<li><a href="/left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="/right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="/no-sidebar.html">No Sidebar</a></li>
-								<li>
-									<a href="#">Submenu</a>
+								<li><a
+									href="${pageContext.request.contextPath}/futsalFrontController/futsallist.fu">구장현황</a></li>
+								<li><a href="no-sidebar.html">No Sidebar</a></li>
+								<li><a href="#">Submenu</a>
 									<ul>
 										<li><a href="#">Option One</a></li>
 										<li><a href="#">Option Two</a></li>
 										<li><a href="#">Option Three</a></li>
 										<li><a href="#">Option Four</a></li>
-									</ul>
-								</li>
+									</ul></li>
+							</ul>
+						</li>
+						<li><a href="${pageContext.request.contextPath}/team/TeamList.te" class="submenu fa-angle-down">Team</a>
+							<ul>
+								<li><a href="${pageContext.request.contextPath}/team/TeamList.te">팀 목록 보기</a></li>
+								<li><a href="#">팀 생성하기</a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#" class="submenu fa-angle-down">Board</a>
 							<ul>
-								<li><a href="/board/boardList.bo?num=1">REVIEW</a></li>
-								<li><a href="/board/boardList.bo?num=2">1:1 문의하기</a></li>
-								<li><a href="/board/boardList.bo?num=3">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#" class="submenu fa-angle-down">Admin</a>
 							<ul>
-								<li><a href="/admin/board.bo">게시판관리</a></li>
-								<li><a href="/admin/boardlist.bo">게시물관리</a></li>
+								<li><a href="${pageContext.request.contextPath}/admin/board.bo">게시판관리</a></li>
+								<li><a href="${pageContext.request.contextPath}/admin/boardlist.bo">게시물관리</a></li>
 							</ul>
 						</li>
 						<!-- <li><a href="elements.html">Elements</a></li> -->
@@ -68,33 +73,26 @@
 								<thead>
 									<tr>
 										<td>번호</td>
-										<td>게시판번호</td>
 										<td>제목</td>
-										<td>답변상태</td>
 										<td>작성자</td>
 										<td>날짜</td>
 										<td>조회</td>
 									</tr>
 								</thead>
 								<tbody>
-									<tr onclick="location.href='/app/board/admin_boardview.jsp'">
-										<td>1</td>
-										<td>1</td>
-										<td>TITLE</td>
-										<td>미답변</td>
-										<td>USER1</td>
-										<td>2021-03-05</td>
-										<td>3회</td>
-									</tr>
-									<tr onclick="location.href='/app/board/admin_boardview.jsp'">
-										<td>2</td>
-										<td>1</td>
-										<td>TITLE</td>
-										<td>미답변</td>
-										<td>USER2</td>
-										<td>2021-03-08</td>
-										<td>0회</td>
-									</tr>
+								<c:choose>
+									<c:when test="${list != null and fn:length(list) > 0 }">
+										<c:forEach var="board" items="${list}">
+											<tr onclick="location.href='/admin/adminView.bo?num=${board.getListnum()}'">
+												<td>${board.getListnum() }</td>
+												<td>${board.getListtitle() }</td>
+												<td>${board.getUsernum() }</td>
+												<td>${board.getListdate() }</td>
+												<td>${board.getReadcnt() }회</td>
+											</tr>
+										</c:forEach>
+									</c:when>
+								</c:choose>
 								</tbody>
 							</table>
 					</div>

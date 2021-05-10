@@ -1,72 +1,21 @@
 function sendIt(){
-	const teamjoin=document.teamjoin;
-	if(teamjoin.teamname.value=="" || teamjoin.teamname.value==null){
-		alert("팀명을 입력해 주세요");
-		teamjoin.teamname.focus();
+	const joinform=document.joinform;
+	
+	if(joinform.username.value=="" || joinform.username.value==null){
+		alert("이름을 입력해 주세요");
+		joinform.username.focus();
 		return false;
-	var checkText = document.getElementById("checkText");
-	if (checkText.innerHTML != "사용 가능한 팀명입니다.") {
-		alert("아이디 중복검사를 먼저 해주세요");
+	}if(joinform.nickname.value=="" || joinform.nickname.value==null){
+		alert("닉네임을 입력해 주세요");
+		joinform.nickname.focus();
 		return false;
-		}	
-	}if(teamjoin.captainname.value=="" || teamjoin.captainname.value==null){
-		alert("주장이름을 입력해 주세요");
-		teamjoin.captainname.focus();
+	}if(joinform.usertel.value=="" || joinform.usertel.value==null){
+		alert("연락처를 입력해 주세요");
+		joinform.usertel.focus();
 		return false;
-	}if(teamjoin.teamtel.value=="" || teamjoin.teamtel.value==null){
-		alert("전화번호를 입력해 주세요");
-		teamjoin.teamtel.focus();
+	}if(joinform.mainposition.value=="" || joinform.mainposition.value==null){
+		alert("주 포지션을 입력해 주세요");
+		joinform.mainposition.focus();
 		return false;
-	}if(teamjoin.teamlocal.value=="selectlocal" || teamjoin.teamlocal.value==null){
-		alert("지역을 선택해 주세요");
-		teamjoin.teamlocal.focus();
-		return false;
-	}if(teamjoin.teamlevel.value=="selectlevel" || teamjoin.teamlevel.value==null){
-		alert("실력을 선택해 주세요");
-		teamjoin.teamlevel.focus();
-		return false;
-	}
-	teamjoin.submit();
+	}		
 }
-
-$(document).ready(function(){
-	  var fileTarget = $('.filebox .upload-hidden');
-
-	    fileTarget.on('change', function(){
-	        if(window.FileReader){
-	            var filename = $(this)[0].files[0].name;
-	        } else {
-	            var filename = $(this).val().split('/').pop().split('\\').pop();
-	        }
-
-	        $(this).siblings('.upload-name').val(filename);
-	    });
-	});
-
-function checkName() {
-	var teamname = $('input[name=teamname]').val();
-    $.ajax({
-        url:contextPath+'/team/TeamNameCheck.te', 
-        type:'post',
-        data:"teamname="+teamname,//teamname=test
-        success:function(data){
-        	/*console.log($.trim(data));*/
-            if($.trim(data)=="success"){
-                $('#checkText').html("사용 가능한 팀명입니다.");  
-                $("#checkText").css("color", "#4CAF50");
-            }else{
-                $('#checkText').html("중복된 팀명입니다.");
-                $("#checkText").css("color", "#f44336");
-            }
-        },
-        error:function(request,status,error){
-        	alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-        }
-    });
-};
-
-
-
-
-
- 

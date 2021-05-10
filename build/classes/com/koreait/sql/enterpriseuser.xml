@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EUser">
+	<insert id="join" parameterType="euserbean">
+		INSERT INTO tbl_enterprisemember
+		VALUES(#{epuserid},#{epuserpw},#{epusername},#{epuserphone},#{epusernumber})
+	</insert>
+	<select id="login" parameterType="hashmap"
+		resultType="euserbean">
+		SELECT * FROM tbl_enterprisemember WHERE epUSERID=#{epuserid} AND epUSERPW=#{epuserpw}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+<!-- 형  이거 11번쨰 줄에 >괄호 빠지고 select에 return타입 적어야 할거같아 내가 적으면 문제 생길까봐 주석 남겼어 
+	
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+

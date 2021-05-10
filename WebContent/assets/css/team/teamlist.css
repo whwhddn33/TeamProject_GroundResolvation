@@ -1,12 +1,16 @@
 @charset "UTF-8";
+	.teamlist{
+		margin:0 auto; 
+	}	
+
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
 	button,
-	.button {
+/* 	.button {
 		background-color: #444444;
 		color: #fbfbfb !important;
-	}
+	} */
 
 		input[type="submit"]:hover,
 		input[type="reset"]:hover,
@@ -50,9 +54,52 @@
 				background-color: #373737;
 			}
 			
+label{
+	padding-top: 10px;
+	width: 100%;
+}
+
+/*팀 가입 폼*/
+.search{
+	width: 100%;
+	/*height: 100%;*/
+	/*position : absolute; 사용x*/
+	/* left:50%; */
+	/*margin-left: -2%;*/
+}
+.searchwrap{
+	width: 50%;
+	height: 100%;
+	justify-content: center;
+ 	/*background-color: coral;   영역 확인용*/
+	margin: 0 auto; 
+	
+}
+			
+/*input 설정*/		
+input[type="text"], input[type="password"], input[type="email"], input[type="tel"], 
+input[type="search"], input[type="url"], select, textarea{
+    border: none;
+    border: solid 1px;
+    background-color: transparent;
+    border-color: #e6e6e6;
+    color: inherit;
+    display: block;
+    outline: 0;
+    padding: 0 1em;
+    text-decoration: none;
+    width: 100%;
+}
+
+ul.search_actions {
+		background-color: #f6f6f6;
+		list-style: none;	
+		vertical-align: middle;
+	}
+			
 /* Table */
 
-	.table-wrapper {
+	.team-table-wrapper {
 		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
 	}
@@ -137,3 +184,4 @@
 	table.alt tbody tr td {
 		border-color: #e6e6e6;
 	}
+	

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE HTML>
 <!--
 	Slate by Pixelarity
@@ -12,13 +14,14 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
+		<link rel="stylesheet" href="/assets/css/board/board.css" />
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-
+		<c:set var="board" value="${requestScope.board}" />
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="/index.jsp">Slate <span>by Pixelarity</span></a></h1>
+				<a href="/index.jsp"><img src="/images/logo2.png" class="logo2"></span></a>
 				<nav id="nav">
 					<ul>
 						<li><a href="/index.jsp">Home</a></li>
@@ -42,16 +45,15 @@
 						<li>
 							<a href="#" class="submenu fa-angle-down">Board</a>
 							<ul>
-								<li><a href="/board/boardList.bo?num=1">REVIEW</a></li>
-								<li><a href="/board/boardList.bo?num=2">1:1 문의하기</a></li>
-								<li><a href="/board/boardList.bo?num=3">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#" class="submenu fa-angle-down">Admin</a>
 							<ul>
-								<li><a href="/admin/board.bo">게시판관리</a></li>
-								<li><a href="/admin/boardlist.bo">게시물관리</a></li>
+								<li><a href="${pageContext.request.contextPath}/admin/board.bo">게시판관리</a></li>
+								<li><a href="${pageContext.request.contextPath}/admin/boardlist.bo">게시물관리</a></li>
 							</ul>
 						</li>
 						<!-- <li><a href="elements.html">Elements</a></li> -->
@@ -61,31 +63,18 @@
 			</header>
 
 		<!-- Main -->
-			<section id="main" class="wrapper">
+			<section id="main" class="wrapper boardView">
 				<div class="inner">
 
 					<header class="major">
-						<h2>VIEW</h2>
+						<h2>게시글 보기</h2>
 					</header>
 						<section>
 							<div class="table-wrapper">
-								<table>
-									<thead>
-										<tr>
-											<td>번호</td>
-											<td>게시판번호</td>
-											<td>제목</td>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>1</td>
-											<td>TITLE</td>
-										</tr>
-									</tbody>
-								</table>
-								<table>
+								<div class="titleWrap">
+									${board.getListtitle()}
+								</div>
+								<table border="1">
 									<thead>
 										<tr>
 											<th>제목</th>
@@ -95,23 +84,18 @@
 									</thead>
 									<tbody>
 										<tr>
-											<td>TITLE</td>
-											<td>2021-03-05</td>
-											<td>0회</td>
+											<td>${board.getListtitle() }</td>
+											<td>${board.getListdate() }</td>
+											<td>${board.getReadcnt() }회</td>
 										</tr>
 									</tbody>
 								</table>
-								<table class="ContentWrap">
-									<thead>
-										<tr>
-											<th>내용</th>
-										</tr>
-									</thead>
-								</table>
-								<div class="contentText">Ante turpis integer aliquet porttitor.</div>
-								<div>
-									<a href="/app/board/admin_boardmodi.jsp" class="button primary small">수정</a>
-									<a onclick="Delete()" class="button small mt-70">삭제</a>
+								<div class="viewWrap">
+									<td>${board.getListcontents() }</td>
+								</div>
+								<div class="btnWrap">
+									<a href="/admin/boardModi.bo?num=${board.getListnum() }" class="btn2 small">수정</a>
+									<a onclick="Delete('/admin/boardDel.bo?num=${board.getListnum()}')" class="btn3 small">삭제</a>
 								</div>
 							</div>
 						</section>
@@ -139,8 +123,9 @@
 			<script src="/assets/js/util.js"></script>
 			<script src="/assets/js/main.js"></script>
 			<script>
-				function Delete(){
+				function Delete(url){
 					confirm("정말 삭제하시겠습니까?");
+					location.href = url;
 				}
 			</script>
 	</body>

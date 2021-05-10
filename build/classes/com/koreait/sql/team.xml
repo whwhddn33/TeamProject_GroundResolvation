@@ -3,12 +3,43 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Team">
-	<insert id="join" parameterType="teamBean">
+	<!-- 팀 생성 -->
+	<insert id="create" parameterType="teamBean">
 		INSERT INTO TBL_TEAM
 		VALUES(TEAMNO_SEQ.NEXTVAL,#{teamName},#{captainName},#{teamTel},#{teamLocal},#{teamFoundYear},
 		#{teamLevel},#{startAge},#{stopAge},#{uniformColor},#{uniformAway},#{controlLabel})
 	</insert>
-	<select id="checkname" parameterType="string" resultType="_int">
+	<!-- 팀 로고 첨부 -->
+	<insert id="insertFiles" parameterType="fileBean">
+		INSERT INTO TBL_TEAMLOGO VALUES (${teamNo}, #{fileName}, #{fileRealName})
+	</insert>
+	<!-- 현재 팀 번호 -->
+	<select id="teamNoSeq" resultType="_int">
+		SELECT TEAMNO_SEQ.CURRVAL FROM DUAL
+	</select>
+	<!-- 팀 이름 중복검사 -->
+	<select id="checkName" parameterType="string" resultType="_int">
 		SELECT COUNT(*) FROM TBL_TEAM WHERE TEAMNAME=#{teamnName}
 	</select>
+	<!-- 팀 상세보기 -->
+	<select id="teamDesc" parameterType="_int" resultType="teamBean">
+		SELECT TEAMNAME, TEAMLOCAL, TEAMLEVEL FROM TBL_TEAM WHERE TEAMNO=${teamNo}
+	</select>
+	<!-- 팀 리스트 -->
+	<select id="teamListAll" parameterType="hashmap" resultType="teamBean">
+		SELECT * FROM
+			(SELECT ROWNUM r, d.*
+			FROM (SELECT * FROM TBL_TEAM ORDER BY TEAMNO DESC) d) b
+		WHERE b.r BETWEEN ${startRow} AND ${endRow}
+	</select>
+	<select id="teamCnt" resultType="_int">
+		SELECT COUNT(*) FROM TBL_TEAM	
+	</select>
+	<select id="getTeamInfo" parameterType="string" resultType="_int">
+		SELECT TEAMNAME, STARTAGE, ENDAGE, TEAMLOCAL, CONTROLLABEL FROM TBL_TEAM WHERE TEAMNAME=#{teamnName}
+	</select>
+	<!-- 팀 정보수정 -->
+	<update id="teamModify" parameterType="teamBean">
+		UPDATE SET WHERE
+	</update>
 </mapper>

@@ -42,9 +42,8 @@
 						<li>
 							<a href="#" class="submenu fa-angle-down">Board</a>
 							<ul>
-								<li><a href="/board/boardList.bo?num=1">REVIEW</a></li>
-								<li><a href="/board/boardList.bo?num=2">1:1 문의하기</a></li>
-								<li><a href="/board/boardList.bo?num=3">FAQ</a></li>
+								<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
+								<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
 							</ul>
 						</li>
 						<li>

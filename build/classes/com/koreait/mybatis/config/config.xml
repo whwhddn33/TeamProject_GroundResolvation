@@ -2,13 +2,18 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
+
 <configuration>
   <typeAliases>	
+  	<typeAlias type="com.koreait.app.futsalDAO.GroundInfoBean" alias = "GroundInfoBean"/>
   	<typeAlias type="com.koreait.app.futsalDAO.FutsalBean" alias = "futsalBean"/>
+  	<typeAlias type="com.koreait.app.futsalDAO.GroundInfoBean" alias = "groundinfo"/>
   	<typeAlias type="com.koreait.app.boardDAO.BoardBean" alias = "boardBean"/>
+  	<typeAlias type="com.koreait.app.boardDAO.ListBean" alias = "listBean"/>
   	<typeAlias type="com.koreait.app.teamDAO.TeamBean" alias = "teamBean"/>
+  	<typeAlias type="com.koreait.app.teamDAO.TeamFileBean" alias = "fileBean"/>
   	<typeAlias type="com.koreait.app.userDAO.UserBean" alias = "userbean"/>
+  	<typeAlias type="com.koreait.app.userDAO.EnterpriseUserBean" alias = "euserbean"/>
   </typeAliases>
   
   <environments default="development">
@@ -28,6 +33,7 @@
     <mapper resource="com/koreait/sql/futsal.xml" />
     <mapper resource="com/koreait/sql/team.xml" />
     <mapper resource="com/koreait/sql/user.xml" />
+    <mapper resource="com/koreait/sql/enterpriseuser.xml" />
   </mappers>
   
 </configuration>

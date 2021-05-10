@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/futsal/calendar.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/futsal/futsallist.css" />
+
 <noscript>
 	<link rel="stylesheet" href="../../assets/css/noscript.css" />
 </noscript>
@@ -31,10 +32,8 @@
 				<li><a href="index.html">Home</a></li>
 				<li><a href="#" class="submenu fa-angle-down">Page Layouts</a>
 					<ul>
-						<li><a
-							href="${pageContext.request.contextPath}/futsalFrontController/futsallist.fu">구장현황</a></li>
-						<li><a 
-						href="${pageContext.request.contextPath}/TeamFrontController/TeamList.te">팀 목록 보기</a></li>
+						<li><a href="${pageContext.request.contextPath}/futsalFrontController/futsallist.fu">구장현황</a></li>
+						<li><a href="${pageContext.request.contextPath}/TeamFrontController/TeamList.te">팀 목록 보기</a></li>
 						<li><a href="no-sidebar.html">No Sidebar</a></li>
 						<li><a href="#">Submenu</a>
 							<ul>
@@ -42,14 +41,14 @@
 								<li><a href="#">Option Two</a></li>
 								<li><a href="#">Option Three</a></li>
 								<li><a href="#">Option Four</a></li>
-							</ul></li>
+							</ul>
+						</li>
 					</ul>
 				</li>
 				<li><a href="#" class="submenu fa-angle-down">Board</a>
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=1">REVIEW</a></li>
-						<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
-						<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
 					</ul>
 				</li>
 				<li><a href="#" class="submenu fa-angle-down">Admin</a>
@@ -76,64 +75,58 @@
 
 	<!-- Main -->
 	
-	<div id = futsalweather>
-				<table>
-				<%
-					Calendar cal = Calendar.getInstance();
-					int i = 1;
-				%>
-				<tr>
-				<td></td>
-					<c:forEach var="i" begin="0" end="6" step="1">
-						<td>
-							<%=cal.getTime().getDate()%>
-						<br> 
-							<%cal.add(Calendar.DATE, i);%>
-						</td>
-					</c:forEach>
-				</tr>
-				<tr>
-				<td>날씨</td>
-					<c:forEach var="i" begin="0" end="6" step="1">
-						<td id ="SKY${i}"></td>
-					</c:forEach>
-				</tr>
-				<tr>
-				<td>강수확률</td>
-					<c:forEach var="i" begin="0" end="6" step="1">
-						<td id ="POP${i}"></td>
-					</c:forEach>
-				</tr>
-				</table>
-	</div>
+
 	
 	<section id="main" class="wrapper sidebar left">
 		<div id="futsalinner" class="inner">
-			<!-- Content -->
-			<div id = "futsalcontent" class="content">
-				javarequest today : 
+			<div id = futsalweather>
+					<table>
+					<%
+						Calendar cal = Calendar.getInstance();
+						int i = 1;
+					%>
+					<tr>
+					<td></td>
+						<c:forEach var="i" begin="0" end="6" step="1">
+							<td>
+								<%=cal.getTime().getDate()%>
+							<br> 
+								<%cal.add(Calendar.DATE, i);%>
+							</td>
+						</c:forEach>
+					</tr>
+					<tr>
+					<td>날씨</td>
+						<c:forEach var="i" begin="0" end="6" step="1">
+							<td id ="SKY${i}"></td>
+						</c:forEach>
+					</tr>
+					<tr>
+					<td>강수확률</td>
+						<c:forEach var="i" begin="0" end="6" step="1">
+							<td id ="POP${i}"></td>
+						</c:forEach>
+					</tr>
+					</table>
 			</div>
-			<!-- Sidebar -->
-			<div id = "futsalsidebar" class="sidebar" style="text-align: center; ">
-				<section>
-					<h3 id = "calendarh3">달력</h3>
-					<div id="calendarForm" style="font-size: 8px;"></div>
-				</section>
-				<hr />
-				
-				<section>
-					<h3 id = "maph3">지도</h3>
-						<div id = mapParent>
-							<div id = mapdiv>
-								<div>
-									<div id="map"></div>
-								</div>
-							</div>
-						</div>
-				</section>
-				
+			<hr/>
+			<div id = mapwrapper>
+				<div id="map"></div>
 			</div>
+			<div id = line></div>
+				
+			<div id = calenderwrapper>
+				<div id="calendarForm" style="font-size: 8px;"></div>
+			</div>
+			
+				<!-- Content -->
+			<div id = "futsalcontent" class="contents">
+				<div id = loading>구장목록을 불러오는중입니다</div>
+			</div>
+			
+			
 		</div>
+		
 	</section>
 
 </body>

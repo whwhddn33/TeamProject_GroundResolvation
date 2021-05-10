@@ -322,5 +322,14 @@
 					resetForms: true,
 					side: 'right'
 				});
-
+			let bool = false;
+			$(".faq tr").on("click",function(){
+				if(bool == false){
+					$(this).css("max-height","800px");
+					bool = true;
+				}else{
+					$(this).css("max-height","80px");
+					bool = false;
+				}
+			});
 })(jQuery);

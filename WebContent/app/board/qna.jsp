@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE HTML>
 <!--
 	Slate by Pixelarity
@@ -11,115 +13,102 @@
 		<title>1:1 문의하기</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="../../assets/css/board/board.css" />
 	</head>
 	<body class="is-preload">
-
+		<c:set var="list" value="${requestScope.BoardList}"/>
+		<c:set var="nowPage" value="${requestScope.nowPage}"/>
+		<c:set var="startPage" value="${requestScope.startPage }"/>
+		<c:set var="endPage" value="${requestScope.endPage }"/>
+		<c:set var="totalCnt" value="${requestScope.totalCnt }"/>
+		<c:set var="totalPage" value="${requestScope.totalPage }"/>
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="/index.jsp">Slate <span>by Pixelarity</span></a></h1>
+				<a href="/index.jsp"><img src="/images/logo2.png" class="logo2"></span></a>
 				<nav id="nav">
 					<ul>
-						<li><a href="/index.jsp">Home</a></li>
-						<li>
-							<a href="#" class="submenu fa-angle-down">Page Layouts</a>
-							<ul>
-								<li><a href="/left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="/right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="/no-sidebar.html">No Sidebar</a></li>
-								<li>
-									<a href="#">Submenu</a>
-									<ul>
-										<li><a href="#">Option One</a></li>
-										<li><a href="#">Option Two</a></li>
-										<li><a href="#">Option Three</a></li>
-										<li><a href="#">Option Four</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" class="submenu fa-angle-down">Board</a>
-							<ul>
-								<li><a href="/board/boardList.bo?num=1">REVIEW</a></li>
-								<li><a href="/board/boardList.bo?num=2">1:1 문의하기</a></li>
-								<li><a href="/board/boardList.bo?num=3">FAQ</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" class="submenu fa-angle-down">Admin</a>
-							<ul>
-								<li><a href="/admin/board.bo">게시판관리</a></li>
-								<li><a href="/admin/boardlist.bo">게시물관리</a></li>
-							</ul>
-						</li>
-						<!-- <li><a href="elements.html">Elements</a></li> -->
-						<li><a href="#" class="button">Sign Up</a></li>
+					<li><a href="/">Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/team/TeamList.te" class="submenu fa-angle-down">Team</a>
+						<ul>
+							<li><a href="${pageContext.request.contextPath}/team/TeamList.te">팀 목록 보기</a></li>
+							<li><a href="#">팀 생성하기</a></li>
+						</ul>
+					</li>
+					<li><a href="#" class="submenu fa-angle-down">Board</a>
+						<ul>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
+						</ul>
+					</li>
+					<li><a href="#" class="submenu fa-angle-down">Admin</a>
+						<ul>
+							<li><a href="${pageContext.request.contextPath}/admin/board.bo">게시판관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/boardlist.bo">게시물관리</a></li>
+						</ul>
+					</li>
+					<!-- <li><a href="elements.html">Elements</a></li> -->
+	
+	
+					<c:choose>
+						<c:when test="${login_session ne null}">
+							<li><a href="${pageContext.request.contextPath}/app/user/logOut.me" class="button"
+								id="logOutBtn">Log Out</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="${pageContext.request.contextPath}/app/user/joinIndex.me" class="button">Sign Up</a></li>
+							<li><a href="${pageContext.request.contextPath}/app/user/loginIndex.me" class="button">Login</a></li>
+						</c:otherwise>
+					</c:choose>
 					</ul>
 				</nav>
 			</header>
 
 		<!-- Main -->
-			<section id="main" class="wrapper sidebar qna left">
+			<section id="main" class="wrapper qna">
 				<div class="inner">
-
 					<header class="major">
 						<h2>1:1 문의하기</h2>
 						<p>구매 전 확인하기</p>
 					</header>
 
 					<!-- Content -->
-						<div class="content">
-							<table border="1">
-								<thead>
-									<tr>
-										<td>제목</td>
-										<td>날짜</td>
-										<td>조회</td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr onclick="location.href='/app/board/view.jsp'">
-										<td>TITLE</td>
-										<td>2021-02-21</td>
-										<td>0회</td>
-									</tr>
-									<tr onclick="location.href='/app/board/view.jsp'">
-										<td>TITLE</td>
-										<td>2021-03-05</td>
-										<td>0회</td>
-									</tr>
-									<tr onclick="location.href='/app/board/view.jsp'">
-										<td>TITLE</td>
-										<td>2021-03-07</td>
-										<td>0회</td>
-									</tr>
-								</tbody>
-							</table>
-							<a href="board/write.jsp" class="button small">글쓰기</a>
-						</div>
-					
-					<!-- Sidebar -->
-						<div class="sidebar">
-
-							<section>
-								<h3>게시판</h3>
-								<p>게시판을 한눈에<br>보고싶다면?</p>
-								<footer>
-									<ul class="actions">
-										<li><a href="#" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
-							<hr />
-							<ul>
-								<a href="/app/board/review.html"><li>REVIEW</li></a>
-								<a href="/app/board/qna.html"><li>1:1 문의하기</li></a>
-								<a href="/app/board/faq.html"><li>FAQ</li></a>
-							</ul>
-						</div>
-
+					<div class="content">
+						<p>전체 글 개수 : ${totalCnt}</p>
+						<table border="1">
+							<thead>
+								<tr>
+									<td>번호</td>
+									<td>제목</td>
+									<td>작성자</td>
+									<td>날짜</td>
+									<td>조회</td>
+								</tr>
+							</thead>
+							<tbody>
+								<c:choose>
+									<c:when test="${list != null and fn:length(list) > 0 }">
+										<c:forEach var="board" items="${list}">
+											<tr onclick="location.href='/board/boardView.bo?num=${board.getListnum()}'">
+												<td>${board.getListnum()}</td>
+												<td>${board.getListtitle()}</td>
+												<td>${board.getUserid()}</td>
+												<td>${board.getListdate()}</td>
+												<td>${board.getReadcnt()}회</td>
+											</tr>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<tr hegiht="50px" align="center">
+											<td colspan="5">등록된 게시물이 없습니다.</td>
+										</tr>
+									</c:otherwise>
+								</c:choose>
+							</tbody>
+						</table>
+						<a href="/board/boardWrite.bo?num=${category}" class="small btn1">글쓰기</a>
+					</div>
 				</div>
 			</section>
 

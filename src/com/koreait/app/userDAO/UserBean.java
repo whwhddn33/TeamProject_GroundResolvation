@@ -10,6 +10,7 @@ public class UserBean {
 	private String useraddr;
 	private String useraddrdetail;
 	private String useraddretc;
+	
 	public String getUserid() {
 		return userid;
 	}

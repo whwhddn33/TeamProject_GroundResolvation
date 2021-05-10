@@ -13,6 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="/assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+		<noscript><link rel="stylesheet" href="/assets/css/board/board.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -42,9 +43,8 @@
 						<li>
 							<a href="#" class="submenu fa-angle-down">Board</a>
 							<ul>
-								<li><a href="/board/boardList.bo?num=1">REVIEW</a></li>
-								<li><a href="/board/boardList.bo?num=2">1:1 문의하기</a></li>
-								<li><a href="/board/boardList.bo?num=3">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
 							</ul>
 						</li>
 						<li>
@@ -70,64 +70,43 @@
 					</header>
 
 					<!-- Content -->
-						<div class="content">
-							<table border="1">
-								<thead>
-									<tr>
-										<td>이미지</td>
-										<td>닉네임</td>
-										<td>제목</td>
-										<td>날짜</td>
-										<td>조회</td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr onclick="location.href='/app/board/view.jsp'">
-										<td><img src="/images/review1.jpg" class="img"></td>
-										<td>PLAYER1</td>
-										<td>TITLE</td>
-										<td>2021-02-21</td>
-										<td>0회</td>
-									</tr>
-									<tr onclick="location.href='/app/board/view.jsp'">
-										<td><img src="/images/review2.jpg" class="img"></td>
-										<td>PLAYER1</td>
-										<td>TITLE</td>
-										<td>2021-03-05</td>
-										<td>0회</td>
-									</tr>
-									<tr onclick="location.href='/app/board/view.jsp'">
-										<td><img src="/images/review3.jpg" class="img"></td>
-										<td>PLAYER1</td>
-										<td>TITLE</td>
-										<td>2021-03-07</td>
-										<td>0회</td>
-									</tr>
-								</tbody>
-							</table>
-							<a href="/app/board/write.jsp" class="button small">글쓰기</a>
-						</div>
-
-					<!-- Sidebar -->
-						<div class="sidebar">
-
-							<section>
-								<h3>게시판</h3>
-								<p>게시판을 한눈에<br>보고싶다면?</p>
-								<footer>
-									<ul class="actions">
-										<li><a href="#" class="button">Learn More</a></li>
-									</ul>
-								</footer>
-							</section>
-							<hr />
-							<ul>
-								<a href="/app/board/review.jsp"><li>REVIEW</li></a>
-								<a href="/app/board/qna.jsp"><li>1:1 문의하기</li></a>
-								<a href="/app/board/faq.jsp"><li>FAQ</li></a>
-							</ul>
-						</div>
-
+					<div class="content">
+						<table border="1">
+							<thead>
+								<tr>
+									<td>이미지</td>
+									<td>닉네임</td>
+									<td>제목</td>
+									<td>날짜</td>
+									<td>조회</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr onclick="location.href='/app/board/view.jsp'">
+									<td><img src="/images/review1.jpg" class="img"></td>
+									<td>PLAYER1</td>
+									<td>TITLE</td>
+									<td>2021-02-21</td>
+									<td>0회</td>
+								</tr>
+								<tr onclick="location.href='/app/board/view.jsp'">
+									<td><img src="/images/review2.jpg" class="img"></td>
+									<td>PLAYER1</td>
+									<td>TITLE</td>
+									<td>2021-03-05</td>
+									<td>0회</td>
+								</tr>
+								<tr onclick="location.href='/app/board/view.jsp'">
+									<td><img src="/images/review3.jpg" class="img"></td>
+									<td>PLAYER1</td>
+									<td>TITLE</td>
+									<td>2021-03-07</td>
+									<td>0회</td>
+								</tr>
+							</tbody>
+						</table>
+						<a href="/app/board/write.jsp" class="button small">글쓰기</a>
+					</div>
 				</div>
 			</section>
 

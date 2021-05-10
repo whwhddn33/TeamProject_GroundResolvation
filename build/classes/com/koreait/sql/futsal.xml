@@ -3,14 +3,57 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Futsal">
-
-	<select id="loadlist" parameterType="hashmap" resultType="futsalBean">
+	<select id="loadlist" parameterType="hashmap"
+		resultType="futsalBean">
 		SELECT * FROM
-			(SELECT ROWNUM r, a.* FROM 
-			(SELECT * FROM 
-			TBL_GROUND 
-			ORDER BY GROUNDNUM) a) b
+		(SELECT ROWNUM r, a.* FROM
+		(SELECT * FROM
+		TBL_GROUND
+		ORDER BY GROUNDNUM) a) b
 		WHERE b.r BETWEEN ${startNum} AND ${endNum}
 	</select>
 	
+	<select id="registloadlist" parameterType="String"
+		resultType="groundinfoBean">
+		SELECT * FROM TBL_GROUNDINFO WHERE EPUSERID = #{epuserid}
+	</select>
+
+	<insert id="rservartion">
+		INSERT INTO TBL_RESERVATION
+		VALUES(#{RESERVATOIN_SEQ},#{USERID},#{GROUNDNUM},#{GROUNDTIME},#{GROUNDFEE},#{RSEEVATIONDATE},#{EPUSERID})
+	</insert>
+
+	<insert id="groundregist" parameterType="GroundInfoBean">
+	
+		INSERT INTO
+		TBL_GROUNDINFO
+		VALUES(seq_groundnum.nextval, #{epuserid}, #{groundname}, #{groundarea}, #{userpostcode},
+		#{useraddr}, #{useraddrdetail}, #{useraddretc}, #{hashTag},
+		#{weekDayBasicFee}, #{weekEndBasicFee})
+		
+	</insert>
+
+	<insert id="weekDayHotregist" parameterType="hashmap">
+	
+	INSERT INTO TBL_GROUNDHOTTIME
+	(GROUNDFEENUM, GROUNDNUM, GROUNDWEEK, GROUNDTIME, GROUNDHOTTIMEFEE)
+	VALUES(seq_groundfeenum.nextval, seq_groundnum.CURRVAL, 0, #{weekDaytime}, #{weekDayHotTimeFee})
+	
+	</insert>
+	
+	<insert id="weekEndHotregist" parameterType="hashmap">
+	
+	INSERT INTO TBL_GROUNDHOTTIME
+	(GROUNDFEENUM, GROUNDNUM, GROUNDWEEK, GROUNDTIME, GROUNDHOTTIMEFEE)
+	VALUES(seq_groundfeenum.nextval, seq_groundnum.CURRVAL, 1, #{weekEndtime}, #{weekEndHotTimeFee})
+	
+	</insert>
+
+	<!-- 그라운드정보가져오는 sql -->
+	<select id="grtinfo" parameterType="_int"
+		resultType="groundinfoBean">
+		SELECT * FROM TBL_GROUNDINFO
+		WHERE GROUNDNUM=${GROUNDNUM}
+	</select>
 </mapper>
+

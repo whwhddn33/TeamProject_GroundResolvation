@@ -7,26 +7,19 @@
 	License: pixelarity.com/license
 */
 
-
-/*
-	custom
-*/
-#faq{
-	position:fixed;
-	bottom:100px;
-	right:80px;
-	background:#FF3C28;
-	z-index:10;
-	padding:10px 30px;
-	border-radius:30px;
-}
-#faq a{
-	color:#fff;
-	border:none;
-}
+/*custom*/
 .logo{
 	padding:15px;
 	width:180px
+}
+#header a{border:none}
+.logo2 {
+	padding:0px 15px;
+	position:relative;
+	top:50%; transform:translateY(-50%);
+	height:35px;
+	object-fit:contain;
+	border:none;
 }
 .AdminBoardWrap .item{
 	height:60px;
@@ -43,17 +36,6 @@
 .contentText{
 	min-height:200px;
 	margin-bottom:50px;
-}
-.review .img{
-	width:50px;
-	height:40px;
-	position:relative;
-	object-fit:cover;
-	vertical-align:middle
-}
-
-.review tbody td{
-	height:60px;
 }
 
 html, body, div, span, applet, object,
@@ -1949,6 +1931,9 @@ input, select, textarea {
 	button,
 	.button {
 		background-color: transparent;
+
+		color: #444 !important;
+		box-shadow: inset 0 0 0 1px #444;
 	}
 
 		input[type="submit"]:hover,
@@ -1992,6 +1977,7 @@ input, select, textarea {
 			.button.primary:active {
 				background-color: #373737;
 			}
+
 
 /* Features */
 

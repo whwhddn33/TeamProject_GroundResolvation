@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <!--
 	Slate by Pixelarity
@@ -13,55 +14,53 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../../assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="../../assets/css/board/board.css" />
 	</head>
 	<body class="is-preload">
 
-		<!-- Header -->
-			<header id="header" class="header2">
-				<h1><a href="/index.jsp"><img src="../../images/logo_red.png" class="logo"></span></a></h1>
+		<header id="header">
+				<a href="/index.jsp"><img src="/images/logo2.png" class="logo2"></span></a>
 				<nav id="nav">
 					<ul>
-						<li><a href="/index.jsp">Home</a></li>
-						<li>
-							<a href="#" class="submenu fa-angle-down">Page Layouts</a>
-							<ul>
-								<li><a href="/left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="/right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="/no-sidebar.html">No Sidebar</a></li>
-								<li>
-									<a href="#">Submenu</a>
-									<ul>
-										<li><a href="#">Option One</a></li>
-										<li><a href="#">Option Two</a></li>
-										<li><a href="#">Option Three</a></li>
-										<li><a href="#">Option Four</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" class="submenu fa-angle-down">Board</a>
-							<ul>
-								<li><a href="/board/boardList.bo?num=1">REVIEW</a></li>
-								<li><a href="/board/boardList.bo?num=2">1:1 문의하기</a></li>
-								<li><a href="/board/boardList.bo?num=3">FAQ</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" class="submenu fa-angle-down">Admin</a>
-							<ul>
-								<li><a href="/admin/board.bo">게시판관리</a></li>
-								<li><a href="/admin/boardlist.bo">게시물관리</a></li>
-							</ul>
-						</li>
-						<!-- <li><a href="elements.html">Elements</a></li> -->
-						<li><a href="#" class="button">Sign Up</a></li>
+					<li><a href="/">Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/team/TeamList.te" class="submenu fa-angle-down">Team</a>
+						<ul>
+							<li><a href="${pageContext.request.contextPath}/team/TeamList.te">팀 목록 보기</a></li>
+							<li><a href="#">팀 생성하기</a></li>
+						</ul>
+					</li>
+					<li><a href="#" class="submenu fa-angle-down">Board</a>
+						<ul>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=1">REVIEW</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
+						</ul>
+					</li>
+					<li><a href="#" class="submenu fa-angle-down">Admin</a>
+						<ul>
+							<li><a href="${pageContext.request.contextPath}/admin/board.bo">게시판관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/boardlist.bo">게시물관리</a></li>
+						</ul>
+					</li>
+					<!-- <li><a href="elements.html">Elements</a></li> -->
+	
+	
+					<c:choose>
+						<c:when test="${login_session ne null}">
+							<li><a href="${pageContext.request.contextPath}/app/user/logOut.me" class="button"
+								id="logOutBtn">Log Out</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="${pageContext.request.contextPath}/app/user/joinIndex.me" class="button">Sign Up</a></li>
+							<li><a href="${pageContext.request.contextPath}/app/user/loginIndex.me" class="button">Login</a></li>
+						</c:otherwise>
+					</c:choose>
 					</ul>
 				</nav>
 			</header>
 
 		<!-- Main -->
-		<section id="main" class="wrapper faq left">
+		<section id="main" class="wrapper faq">
 			<div class="inner">
 				<header class="major">
 					<h2>FAQ</h2>
@@ -71,20 +70,47 @@
 				<!-- Content -->
 					<div class="content">
 						<table border="1">
-							<thead>
-								<tr>
-									<td>Question</td>
-								</tr>
-							</thead>
 							<tbody>
 								<tr>
-									<td>신청한 경기를 취소하고 싶어요</td>
+									<td class="toggleTr">Q. 환불을 받고싶어요</td>
+									<td class="hideTr">
+										<div>
+											A. 카카오톡 채널로 아래의 내용을 작성해서 보내주시면 확인 후 안내해 드립니다.<br><br>
+											예약한 구장의 환불 규정을 먼저 확인 후 문의해주세요<br><br>
+											카카오톡 검색 : 아이엠그라운드<br>
+											(평일, 주말 10시 ~ 23시)<br><br>
+											- 예약 구장 : <br>
+											- 예약 날짜, 시간 : <br> 
+											- 예약자명 : <br>
+											- 결제수단 (가상계좌, 카드결제) : <br>
+											- 환불정보 (은행명,계좌번호,예금주) : <br>
+										</div>	  
+									</td>
 								</tr>
 								<tr>
-									<td>결제가 되지않아요</td>
+									<td class="toggleTr">Q. 환불 규정을 확인하고 싶어요.</td>
+									<td class="hideTr">
+										<div>
+											A. 환불 규정 확인은 다음과 같이 가능합니다.<br><br>
+											- PC<br>
+											1) 사이트 접속<br>
+											2) 구장 선택 (예약 버튼 클릭)<br>
+											3) 아래 환불규정, 변경규정 확인하기<br><br>
+											- MOBILE<br>
+											1) 사이트 혹은 앱 접속<br>
+											2) 구장 선택<br>
+											3) 구장 사진 클릭<br>
+											4) 아래 환불규정, 변경규정 확인하기<br>
+										</div>  
+									</td>
 								</tr>
 								<tr>
-									<td>예약은 어떻게 할수있나요?</td>
+									<td class="toggleTr">Q. 구장 연락처를 확인하고 싶어요.</td>
+									<td class="hideTr">
+										<div>
+											A. 구장 연락처는 예약이 확정되면 카카오톡으로 자동 안내 됩니다.
+										</div>  
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -112,6 +138,5 @@
 			<script src="/assets/js/breakpoints.min.js"></script>
 			<script src="/assets/js/util.js"></script>
 			<script src="/assets/js/main.js"></script>
-
 	</body>
 </html>

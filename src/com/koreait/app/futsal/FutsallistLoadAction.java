@@ -12,19 +12,19 @@ import com.koreait.action.ActionForward;
 import com.koreait.app.futsalDAO.FutsalBean;
 import com.koreait.app.futsalDAO.FutsalDAO;
 
-import jdk.nashorn.internal.parser.JSONParser;
+
 
 public class FutsallistLoadAction implements Action{
 
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		ActionForward forward= new ActionForward();
 		FutsalDAO fdao = new FutsalDAO();
 		
 		String String_tryCount = request.getParameter("tryCount");
 		int tryCount = Integer.parseInt(String_tryCount);
 		System.out.println(tryCount);
+		
 		List<FutsalBean> loadlist = fdao.getgroundlist(tryCount);
 		System.out.println(loadlist);
 		for (FutsalBean i : loadlist) {

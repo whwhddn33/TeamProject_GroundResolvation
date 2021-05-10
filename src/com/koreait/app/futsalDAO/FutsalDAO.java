@@ -158,4 +158,27 @@ public class FutsalDAO {
 		List<FutsalBean> loadlist = sqlsession.selectList("Futsal.loadlist",datas);
 		return loadlist;
 	}
+	
+	
+	
+	public GroundInfoBean getinfo(int groundnum) {
+			GroundInfoBean info= new GroundInfoBean();
+		return sqlsession.selectOne("Futsal.getinfo", info);
+	}
+	
+	public int insertgroundinfo(GroundInfoBean ginfobean) {
+		return sqlsession.insert("Futsal.groundregist", ginfobean);
+	}
+	public int insertWeekDayHotTime(HashMap<String, String> weekDayHotTimeMap) {
+		return sqlsession.insert("Futsal.weekDayHotregist", weekDayHotTimeMap);
+	}
+	
+	public int insertWeekEndHotTime(HashMap<String, String> weekDayHotTimeMap) {
+		return sqlsession.insert("Futsal.weekEndHotregist", weekDayHotTimeMap);
+	}
+	public List<GroundInfoBean> getregistlist(String epuserid) {
+		List<GroundInfoBean> loadlist = sqlsession.selectList("Futsal.registloadlist",epuserid);
+		return loadlist;
+	}
+	
 }

@@ -49,14 +49,65 @@ public class BoardFrontController extends HttpServlet {
 				System.out.println(e);
 			}
 		}else if(command.equals("/board/boardWrite.bo")) {
-			forward = new ActionForward();
-			forward.setPath("/board/boardWrite.jsp");
-		}else if(command.equals("/board/boardWriteOk.bo")) {
 			try {
 				forward = new BoardWriteAction().execute(request,response);
 			} catch (Exception e) {
 				System.out.println(e);
+			}
+		}else if(command.equals("/board/boardWriteOk.bo")) {
+			try {
+				forward = new BoardWriteOkAction().execute(request,response);
+			} catch (Exception e) {
+				System.out.println(e);
 			}	
+		}else if(command.equals("/board/adminWrite.bo")) {
+			try {
+				forward = new AdminWriteOkAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}else if(command.equals("/board/adminDelete.bo")) {
+			try {
+				forward = new AdminDeleteAction().execute(request,response);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}else if(command.equals("/board/adminModify.bo")) {
+			try {
+				forward = new AdminModifyAction().execute(request,response);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}else if(command.equals("/admin/adminView.bo")) {
+			try {
+				forward = new BoardViewAction().execute(request,response);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}else if(command.equals("/admin/boardModi.bo")) {
+			try {
+				forward = new AdminListModiAction().execute(request,response);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}else if(command.equals("/admin/boardModiOk.bo")) {
+			try {
+				forward = new AdminListModiOkAction().execute(request,response);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}else if(command.equals("/admin/boardDel.bo")) {
+			try {
+				forward = new AdminListDelAction().execute(request,response);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		}else if(command.equals("/board/boardView.bo")) {
+			try {
+				forward = new BoardViewAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
 		if(forward != null) {
 			if(forward.isRedirect()) {

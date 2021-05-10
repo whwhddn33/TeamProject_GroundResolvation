@@ -1,5 +1,7 @@
 package com.koreait.app.board;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,6 +15,10 @@ public class AdminBoardAction implements Action{
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		
+		BoardDAO bdao = new BoardDAO();
+		request.setAttribute("BoardList", bdao.getList());
+		bdao.getList();
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
