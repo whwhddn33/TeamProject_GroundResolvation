@@ -11,6 +11,8 @@ function weatherSetter(getdangi,getjungi,getupdateTime) {
 	var dangiPOPArray = new Array();
 	var dangiSKYArray = new Array();
 	var dangiInfo = {};
+	console.log(dangi);
+	console.log(jungi);
 	for(i =0;i<dangiItem.length; i++){
 		if(dangiItem[i].fcstTime==='1200'&&(dangiItem[i].category==='POP'||dangiItem[i].category==='SKY')){
 			if(dangiItem[i].category==='POP'){

@@ -1,16 +1,15 @@
 (function () {
     calendarMaker($("#calendarForm"), new Date());
+    
 })();
-
-var nowDate = new Date();
-
+/*var nowDate = new Date();*/
 function calendarMaker(target, date) {
     
-    if (date == null || date == undefined) {
+    /*if (date == null || date == undefined) {
         date = new Date();
-    }
-    
+    }*/
     nowDate = date;
+    
     if ($(target).length > 0) {
         var year = nowDate.getFullYear();
         var month = nowDate.getMonth() + 1;
@@ -22,6 +21,11 @@ function calendarMaker(target, date) {
 
     var thisMonth = new Date(nowDate.getFullYear(), nowDate.getMonth(), 1);
     var thisLastDay = new Date(nowDate.getFullYear(), nowDate.getMonth() + 1, 0);
+    console.log("thisMonth : " + thisMonth);
+    console.log("thisMonth.getDay() : " + thisMonth.getDay());
+    console.log("thisLastDay : " + thisLastDay);
+    console.log("thisLastDay.getDay() : " + thisLastDay.getDay());
+    
     var tempMonth = parseInt(document.getElementById("month").innerText);
     var tag = "<tr>";
     var cnt = 0;
@@ -44,10 +48,9 @@ function calendarMaker(target, date) {
         if (cnt % 7 == 0) {
             tag += "</tr>";
         }
-        
     }
     $(target).find("#custom_set_date").append(tag);
-    calMoveEvtFn(year,month);
+    calMoveEvtFn();
 
     function assembly(year, month) {
         var calendar_html_code =
@@ -75,7 +78,7 @@ function calendarMaker(target, date) {
         return calendar_html_code;
     }
 
-    function calMoveEvtFn(year,month) {
+    function calMoveEvtFn() {
         //전달 클릭
         $(".custom_calendar_table").on("click", ".prev", function () {
             nowDate = new Date(nowDate.getFullYear(), nowDate.getMonth() - 1, nowDate.getDate());
@@ -89,7 +92,7 @@ function calendarMaker(target, date) {
         //일자 선택 클릭
         $(".custom_calendar_table").on("click", "td", function () {
             $(".custom_calendar_table .select_day").removeClass("select_day");
-            $(this).removeClass("select_day").addClass("select_day");
+            $(this).addClass("select_day");
         });
     }
 

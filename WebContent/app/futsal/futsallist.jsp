@@ -14,10 +14,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/futsal/calendar.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/futsal/futsallist.css" />
-
-<noscript>
-	<link rel="stylesheet" href="../../assets/css/noscript.css" />
-</noscript>
 </head>
 <body id = "futsalbody"class="is-preload">
 
@@ -79,20 +75,13 @@
 	
 	<section id="main" class="wrapper sidebar left">
 		<div id="futsalinner" class="inner">
+		
 			<div id = futsalweather>
 					<table>
-					<%
-						Calendar cal = Calendar.getInstance();
-						int i = 1;
-					%>
 					<tr>
 					<td></td>
 						<c:forEach var="i" begin="0" end="6" step="1">
-							<td>
-								<%=cal.getTime().getDate()%>
-							<br> 
-								<%cal.add(Calendar.DATE, i);%>
-							</td>
+							<td id = "DAY${i}"></td>
 						</c:forEach>
 					</tr>
 					<tr>
@@ -109,12 +98,14 @@
 					</tr>
 					</table>
 			</div>
+			
 			<hr/>
 			<div id = mapwrapper>
 				<div id="map"></div>
 			</div>
+			
 			<div id = line></div>
-				
+			
 			<div id = calenderwrapper>
 				<div id="calendarForm" style="font-size: 8px;"></div>
 			</div>
@@ -152,19 +143,18 @@
 	</script>
 <script>
 $(document).ready(function(){
-<%
-	FutsalDAO fdao = new FutsalDAO();
-	String getDangi = fdao.getDangi();
-	String getJungi = fdao.getJungi();
-	String updateTime = fdao.updateTime();
-	request.setAttribute("getDangi", getDangi);
-	request.setAttribute("getJungi", getJungi);
-	request.setAttribute("updateTime", updateTime);
-%>
 	var getdangi = ${getDangi};
 	var getjungi = ${getJungi};
 	var getupdateTime = ${updateTime};
 	weatherSetter(getdangi,getjungi,getupdateTime);
+ 	insertDate();
+	function insertDate(){
+		var today = new Date();
+		date = today.getDate();
+		for (var i = 0; i < 7; i++) {
+			$("#DAY"+i).text(date+i);	
+		}
+	}
 });
 </script>
 </html>
