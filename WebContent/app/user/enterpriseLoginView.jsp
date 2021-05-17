@@ -10,6 +10,7 @@
 	<title>Insert title here</title>
 </head>
 <body class='doc_container'>
+
     <div class='login_logo'>
       <i class="far fa-user-circle fa-3x"></i>
     </div>

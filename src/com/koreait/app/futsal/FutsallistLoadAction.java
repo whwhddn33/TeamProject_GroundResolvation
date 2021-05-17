@@ -44,5 +44,4 @@ public class FutsallistLoadAction implements Action{
 		out.println("{\"date\":"+objectToReturn+",\"json\" : "+json+"}");
 		return null;
 	}
-
 }

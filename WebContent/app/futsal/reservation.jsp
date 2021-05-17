@@ -27,36 +27,10 @@
 <style type="text/css"></style>
 </head>
 <body class="is-preload">
-
-   <!-- Header -->
-   <header id="header">
-      <h1>
-         <a href="index.html">Slate <span>by Pixelarity</span></a>
-      </h1>
-      <nav id="nav">
-         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#" class="submenu fa-angle-down">Page Layouts</a>
-               <ul>
-                  <li><a href="left-sidebar.html">Left Sidebar</a></li>
-                  <li><a href="right-sidebar.html">Right Sidebar</a></li>
-                  <li><a href="no-sidebar.html">No Sidebar</a></li>
-                  <li><a href="#">Submenu</a>
-                     <ul>
-                        <li><a href="#">Option One</a></li>
-                        <li><a href="#">Option Two</a></li>
-                        <li><a href="#">Option Three</a></li>
-                        <li><a href="#">Option Four</a></li>
-                     </ul>
-                    </li>
-               </ul>
-            </li>
-            
-            <li><a href="elements.html">Elements</a></li>
-            <li><a href="#" class="button">Sign Up</a></li>
-         </ul>
-      </nav>
-   </header>
+	
+	<!-- header -->
+	<jsp:include page="/header.jsp"></jsp:include>
+	
    <!-- main -->
     <section id="main" class="wrapper sidebar left">
         

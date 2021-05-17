@@ -11,6 +11,9 @@
 </head>
 <body>
 
+	<!-- header -->
+	<jsp:include page="/header.jsp"></jsp:include>
+
 	<section id="main" class="wrapper sidebar left">
 		<div id="registinner" class="inner">
 			<div id = regist>

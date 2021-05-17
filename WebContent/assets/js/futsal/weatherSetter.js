@@ -11,8 +11,10 @@ function weatherSetter(getdangi,getjungi,getupdateTime) {
 	var dangiPOPArray = new Array();
 	var dangiSKYArray = new Array();
 	var dangiInfo = {};
+	
 	console.log(dangi);
 	console.log(jungi);
+	
 	for(i =0;i<dangiItem.length; i++){
 		if(dangiItem[i].fcstTime==='1200'&&(dangiItem[i].category==='POP'||dangiItem[i].category==='SKY')){
 			if(dangiItem[i].category==='POP'){
@@ -23,7 +25,6 @@ function weatherSetter(getdangi,getjungi,getupdateTime) {
 			if(dangiItem[i].category==='SKY'){
 				dangiInfo.SKY = dangiItem[i].fcstValue;
 				dangiArray.push(dangiInfo);
-				
 			}
 		}
 	}
@@ -43,15 +44,16 @@ function weatherSetter(getdangi,getjungi,getupdateTime) {
 			document.getElementById('POP'+i).innerHTML = dangiArray[i].POP+"%";		
 		}
 	}
+	
 	if(new Date().getHours()<5){
-		document.getElementById('SKY2').innerHTML = jungiItem.wf3Am;
-		document.getElementById('POP2').innerHTML = jungiItem.rnSt3Am+"%";
-		document.getElementById('SKY3').innerHTML = jungiItem.wf4Am;
-		document.getElementById('POP3').innerHTML = jungiItem.rnSt4Am+"%";
-		document.getElementById('SKY4').innerHTML = jungiItem.wf5Am;
-		document.getElementById('POP4').innerHTML = jungiItem.rnSt5Am+"%";
-		document.getElementById('SKY5').innerHTML = jungiItem.wf6Am;
-		document.getElementById('POP5').innerHTML = jungiItem.rnSt6Am+"%";
+		document.getElementById('SKY3').innerHTML = jungiItem.wf3Am;
+		document.getElementById('POP3').innerHTML = jungiItem.rnSt3Am+"%";
+		document.getElementById('SKY4').innerHTML = jungiItem.wf4Am;
+		document.getElementById('POP4').innerHTML = jungiItem.rnSt4Am+"%";
+		document.getElementById('SKY5').innerHTML = jungiItem.wf5Am;
+		document.getElementById('POP5').innerHTML = jungiItem.rnSt5Am+"%";
+		document.getElementById('SKY6').innerHTML = jungiItem.wf6Am;
+		document.getElementById('POP6').innerHTML = jungiItem.rnSt6Am+"%";
 	}else if(new Date().getHours()>=5){
 		document.getElementById('SKY3').innerHTML = jungiItem.wf3Am;
 		document.getElementById('POP3').innerHTML = jungiItem.rnSt3Am+"%";

@@ -59,6 +59,7 @@ import com.koreait.action.ActionForward;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
 			}else if(command.equals("/futsalFrontController/groundregist.fu")) {
 				try {
 					System.out.println("컨트롤러/구장등록");
@@ -66,6 +67,7 @@ import com.koreait.action.ActionForward;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
 			}else if(command.equals("/futsalFrontController/groundregistpage.fu")) {
 				try {
 					System.out.println("컨트롤러/구장등록페이지이동");

@@ -11,21 +11,21 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath}/assets/css/board/board.css" type="text/css" rel="stylesheet" />
-<noscript>	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
 
 	<!-- Header -->
-	
+		<div id = indexBtn style="display: none"></div>
 	<c:choose> 
 		<c:when test="${enterprisenumber ne null}">
 		<header id="header" class="alt">
 			<h1>
-				<a href="/index.jsp"><img src="images/logo.png" class="logo"></span></a>
+				<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" class="logo"></a>
 			</h1>
+			
 			<nav id="nav">
 				<ul>
-					<li><a href="index.html">Home</a></li>
+					<li><a href="/index.jsp">Home</a></li>
 					<li><a href="#" class="submenu fa-angle-down">구장관리</a>
 						<ul>
 							<li><a
@@ -39,16 +39,17 @@
 							id="logOutBtn">Log Out</a></li>
 				</ul>
 			</nav>
+			
 		</header>
 		</c:when>
 	<c:otherwise>
 		<header id="header" class="alt">
 			<h1>
-				<a href="/index.jsp"><img src="images/logo.png" class="logo"></span></a>
+				<a href="${pageContext.request.contextPath}/index.jsp"><img src="images/logo.png" class="logo"></span></a>
 			</h1>
 			<nav id="nav">
 				<ul>
-					<li><a href="index.html">Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
 					<li><a href="#" class="submenu fa-angle-down">Page Layouts</a>
 						<ul>
 							<li><a
@@ -131,7 +132,7 @@
 		<a href="app/board/faq.jsp"><i class="fas fa-comment-dots"></i>
 			도움말</a>
 	</div>
-	<div id = indexBtn style="display: none"></div>
+
 	<!-- Scripts -->
 	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
@@ -140,36 +141,7 @@
 	<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
-	<script>
-	
-    $(document).click(function(e){
- 		if(e.target.className =="indexBox"){return false}
- 		$(".indexBox").stop().fadeOut(500);
- 	});
-    
-	function signupBtnClick(){
-		console.log("버튼클릭");
-		var tag = '';
-		$('#indexBtn').show();
-		tag +='<div class = indexBox>';
-		tag +='<div id = indexlogo>회원가입</div>';
-		tag +='<button id = joinbtn1 type = "button" onclick="location.href =\'${pageContext.request.contextPath}/app/user/joinIndividualView.me\'"><i class="fas fa-male"></i><br><br>개인</button>'
-		tag +='<button id = joinbtn2 type = "button" onclick="location.href =\'${pageContext.request.contextPath}/app/user/joinEnterpriseView.me\'"><i class="far fa-building"></i><br><br>기업</button>'
-		tag +='</div>';
-			$('#indexBtn').html(tag);
-	}
-	function loginBtnClick(){
-			console.log("버튼클릭");
-			var tag = '';
-			$('#indexBtn').show();
-			tag +='<div class = indexBox>';
-			tag +='<div id = indexlogo>로그인</div>';
-			tag +='<button id = joinbtn1 type = "button" onclick="location.href =\'${pageContext.request.contextPath}/app/user/loginView.me\'"><i class="fas fa-male"></i><br><br>개인</button>'
-			tag +='<button id = joinbtn2 type = "button" onclick="location.href =\'${pageContext.request.contextPath}/app/user/enterpriseLoginView.me\'"><i class="far fa-building"></i><br><br>기업</button>'
-			tag +='</div>';
-				$('#indexBtn').html(tag);
-		}
-	</script>
+	<script src="${pageContext.request.contextPath}/assets/js/loginsingup.js"></script>
 	
 </body>
 </html>

@@ -24,61 +24,10 @@
 	<c:set var="totalPage" value="${requestScope.totalPage }" />
 	
 	
-	<!-- Header -->
-	<header id="header">
-		<h1>
-			<a href="${pageContext.request.contextPath}/index.jsp">Slate <span>by Pixelarity</span></a>
-		</h1>
-		<nav id="nav">
-			<ul>
-				<li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
-				<li><a href="#" class="submenu fa-angle-down">Page Layouts</a>
-					<ul>
-						<li><a href="${pageContext.request.contextPath}/futsalFrontController/futsallist.fu">구장현황</a></li>
-						<li><a href="no-sidebar.html">No Sidebar</a></li>
-						<li><a href="#">Submenu</a>
-							<ul>
-								<li><a href="#">Option One</a></li>
-								<li><a href="#">Option Two</a></li>
-								<li><a href="#">Option Three</a></li>
-								<li><a href="#">Option Four</a></li>
-							</ul></li>
-					</ul>
-				</li>
-				<li><a href="${pageContext.request.contextPath}/team/TeamList.te" class="submenu fa-angle-down">Team</a>
-					<ul>
-						<li><a href="${pageContext.request.contextPath}/team/TeamList.te">팀 목록 보기</a></li>
-						<li><a href="#">팀 생성하기</a></li>
-					</ul>
-				</li>
-				<li><a href="#" class="submenu fa-angle-down">Board</a>
-					<ul>
-						<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=1">REVIEW</a></li>
-						<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
-						<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
-					</ul>
-				</li>
-				<li><a href="#" class="submenu fa-angle-down">Admin</a>
-					<ul>
-						<li><a href="${pageContext.request.contextPath}/admin/board.bo">게시판관리</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/boardlist.bo">게시물관리</a></li>
-					</ul>
-				</li>
-				<!-- <li><a href="elements.html">Elements</a></li> -->
-				<c:choose>
-					<c:when test="${login_session ne null}">
-						<li><a href="${pageContext.request.contextPath}/app/user/logOut.me" class="button"
-							id="logOutBtn">Log Out</a></li>
-					</c:when>
-					<c:otherwise>
-						<li><a href="${pageContext.request.contextPath}/app/user/joinView.me" class="button">Sign Up</a></li>
-						<li><a href="${pageContext.request.contextPath}/app/user/loginView.me" class="button">Login</a></li>
-					</c:otherwise>
-				</c:choose>
-			</ul>
-		</nav>
-	</header>
-
+			
+		<!-- header -->
+		<jsp:include page="/header.jsp"></jsp:include>
+		
 	<!-- Main -->
  		<!-- 로그인 -->
 			<table border="0" cellpadding="0" cellspacing="0" width="900px">

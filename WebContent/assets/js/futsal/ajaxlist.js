@@ -13,6 +13,9 @@ $(document).ready(function(){
 		lastsign = 0;
 		if (lastsign ===0)callAjax();
 	});
+	$("#futsalcontent").on("click",".futsallist", function () {
+		console.log("listclick");
+	});
 	$(window).scroll(function(){
 		var scrollBottom = $(document).height() - $(window).height() - $(window).scrollTop();
 		console.log(scrollBottom);
@@ -42,9 +45,8 @@ $(document).ready(function(){
 		var ctx = window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
 		
 		$.ajax({
-			url : "${request.pageContext.contextPath}/futsalFrontController/futsallistLoad.fu",
-			type : "POST",
-			contentType : "application/json",
+			url : ctx+"/futsalFrontController/futsallistLoad.fu",
+			type : "get",
 			data: {"selectDate":selectDate , "tryCount" : tryCount},
 			dataType:"JSON"
 		})
@@ -61,7 +63,6 @@ $(document).ready(function(){
 				lastsign ++;
 				$(".contents").html(tags);
 			}else{
-				console.log("asd")
 				tagsStack(data);
 			}
 		})
@@ -75,7 +76,6 @@ $(document).ready(function(){
 	function tagsStack(data) {
 		console.log(data.json.length)
 		for(i = 0; i <data.json.length; i++){
-			console.log("zxc")
 			tags += '<div class = futsallist id = '+((tryCount*6-5)+i)+'>';
 			tags += "<div><img alt=\"이미지\" src=\"\"></div>";
 			tags += "<div>";

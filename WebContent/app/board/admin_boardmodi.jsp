@@ -19,48 +19,10 @@
 	</head>
 	<body class="is-preload">
 		<c:set var="num" value="${requestScope.num}"/>
-		<!-- Header -->
-			<header id="header">
-				<a href="/index.jsp"><img src="/images/logo2.png" class="logo2"></span></a>
-				<nav id="nav">
-					<ul>
-						<li><a href="/index.jsp">Home</a></li>
-						<li>
-							<a href="#" class="submenu fa-angle-down">Page Layouts</a>
-							<ul>
-								<li><a href="/left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="/right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="/no-sidebar.html">No Sidebar</a></li>
-								<li>
-									<a href="#">Submenu</a>
-									<ul>
-										<li><a href="#">Option One</a></li>
-										<li><a href="#">Option Two</a></li>
-										<li><a href="#">Option Three</a></li>
-										<li><a href="#">Option Four</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" class="submenu fa-angle-down">Board</a>
-							<ul>
-							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=2">1:1 문의하기</a></li>
-							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#" class="submenu fa-angle-down">Admin</a>
-							<ul>
-								<li><a href="/admin/board.bo">게시판관리</a></li>
-								<li><a href="/admin/boardlist.bo">게시물관리</a></li>
-							</ul>
-						</li>
-						<!-- <li><a href="elements.html">Elements</a></li> -->
-						<li><a href="#" class="button">Sign Up</a></li>
-					</ul>
-				</nav>
-			</header>
+		
+		<!-- header -->
+		<jsp:include page="/header.jsp"></jsp:include>
+		
 
 		<!-- Main -->
 			<section id="main" class="wrapper">
