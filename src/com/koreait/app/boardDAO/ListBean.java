@@ -1,6 +1,7 @@
 package com.koreait.app.boardDAO;
 
 public class ListBean {
+	
 	int listnum;
 	int usernum;
 	String userid;
@@ -9,6 +10,7 @@ public class ListBean {
 	String listdate;
 	int readcnt;
 	int boardnum;
+	
 	public int getListnum() {
 		return listnum;
 	}

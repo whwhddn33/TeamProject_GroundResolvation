@@ -25,7 +25,6 @@
 			
 			<nav id="nav">
 				<ul>
-					<li><a href="/index.jsp">Home</a></li>
 					<li><a href="#" class="submenu fa-angle-down">구장관리</a>
 						<ul>
 							<li><a
@@ -34,7 +33,6 @@
 							<li><a href="${pageContext.request.contextPath}/futsalFrontController/registlistpage.fu">등록구장리스트</a></li>
 						</ul>
 						
-					<!-- <li><a href="elements.html">Elements</a></li> -->
 					<li><a href="${pageContext.request.contextPath}/app/user/logOut.me" class="button"
 							id="logOutBtn">Log Out</a></li>
 				</ul>
@@ -50,18 +48,10 @@
 			<nav id="nav">
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
-					<li><a href="#" class="submenu fa-angle-down">Page Layouts</a>
+					<li><a href="#" class="submenu fa-angle-down">Ground</a>
 						<ul>
 							<li><a
 								href="${pageContext.request.contextPath}/futsalFrontController/futsallist.fu">구장현황</a></li>
-							<li><a href="no-sidebar.html">No Sidebar</a></li>
-							<li><a href="#">Submenu</a>
-								<ul>
-									<li><a href="#">Option One</a></li>
-									<li><a href="#">Option Two</a></li>
-									<li><a href="#">Option Three</a></li>
-									<li><a href="#">Option Four</a></li>
-								</ul></li>
 						</ul>
 					</li>
 					<li><a href="${pageContext.request.contextPath}/team/TeamList.te" class="submenu fa-angle-down">Team</a>
@@ -76,14 +66,13 @@
 							<li><a href="${pageContext.request.contextPath}/board/boardList.bo?num=3">FAQ</a></li>
 						</ul>
 					</li>
+					
 					<li><a href="#" class="submenu fa-angle-down">Admin</a>
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/admin/board.bo">게시판관리</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/boardlist.bo">게시물관리</a></li>
 						</ul>
 					</li>
-					
-	
 	
 					<c:choose>
 						<c:when test="${login_session ne null}">

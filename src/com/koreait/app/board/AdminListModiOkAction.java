@@ -24,7 +24,7 @@ public class AdminListModiOkAction implements Action{
 		bdao.ListModify(title,content,listnum);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("/admin/boardlist.bo");
+		forward.setPath(request.getContextPath()+"/admin/boardlist.bo");
 		forward.setRedirect(false);
 		return forward;
 	}

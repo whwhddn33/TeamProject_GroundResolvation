@@ -42,11 +42,11 @@ public class BoardListAction implements Action{
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		if(category.equals("1")) {
-			forward.setPath("/app/board/review.jsp");
+			forward.setPath(request.getContextPath()+"/app/board/review.jsp");
 		}else if(category.equals("2")) {
-			forward.setPath("/app/board/qna.jsp");
+			forward.setPath(request.getContextPath()+"/app/board/qna.jsp");
 		}else if(category.equals("3")){
-			forward.setPath("/app/board/faq.jsp");
+			forward.setPath(request.getContextPath()+"/app/board/faq.jsp");
 		}
 		return forward;
 	}

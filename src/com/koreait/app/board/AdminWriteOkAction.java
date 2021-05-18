@@ -22,17 +22,22 @@ public class AdminWriteOkAction implements Action{
 		
 		String name = request.getParameter("name");
 		
+		System.out.println("name : " + name);
+		
 		BoardBean board = new BoardBean();
+		
 		board.setBoardname(name);
 		
 		boolean writeChk = bdao.BoardInsert(board);
+		
 		if(writeChk == false) {
 			forward.setRedirect(true);
-			forward.setPath("/admin/board.bo?res=false");
+			forward.setPath(request.getContextPath()+"/admin/board.bo?res=false");
 			return forward;
 		}
+		
 		forward.setRedirect(true);
-		forward.setPath("/admin/board.bo");
+		forward.setPath(request.getContextPath()+"/admin/board.bo");
 		return forward;
 	}
 }

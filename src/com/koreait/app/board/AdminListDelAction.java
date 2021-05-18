@@ -19,7 +19,7 @@ public class AdminListDelAction implements Action{
 		bdao.ListDelete(num);
 		
 		forward.setRedirect(true);
-		forward.setPath("/admin/boardlist.bo");
+		forward.setPath(request.getContextPath()+"/admin/boardlist.bo");
 		return forward;
 	}
 }

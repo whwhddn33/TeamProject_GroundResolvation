@@ -52,11 +52,11 @@ public class BoardWriteOkAction implements Action{
 		}
 		if(! bchk || ! fchk){
 			forward.setRedirect(true);
-			forward.setPath("/board/boardList.bo?num="+num+"&res=false");
+			forward.setPath(request.getContextPath()+"/board/boardList.bo?num="+num+"&res=false");
 			return forward;
 		}
 		forward.setRedirect(true);
-		forward.setPath("/board/boardList.bo?num="+num);
+		forward.setPath(request.getContextPath()+"/board/boardList.bo?num="+num);
 		return forward;
 	}
 }
