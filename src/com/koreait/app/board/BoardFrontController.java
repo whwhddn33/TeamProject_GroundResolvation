@@ -30,6 +30,8 @@ public class BoardFrontController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String command = requestURI.substring(contextPath.length());
 		ActionForward forward = null;
+		System.out.println("command : "+command);
+		System.out.println("requseturi : " + requestURI);
 		if(command.equals("/board/boardList.bo")) {
 			try {
 				forward = new BoardListAction().execute(request,response);

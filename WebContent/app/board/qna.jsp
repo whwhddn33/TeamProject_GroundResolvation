@@ -13,9 +13,8 @@
 		<title>1:1 문의하기</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../../assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="../../assets/css/noscript.css" /></noscript>
-		<link rel="stylesheet" href="../../assets/css/board/board.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/board.css" />
 	</head>
 	<body class="is-preload">
 		<c:set var="list" value="${requestScope.BoardList}"/>
@@ -54,7 +53,7 @@
 								<c:choose>
 									<c:when test="${list != null and fn:length(list) > 0 }">
 										<c:forEach var="board" items="${list}">
-											<tr onclick="location.href='/board/boardView.bo?num=${board.getListnum()}'">
+											<tr onclick="location.href='${pageContext.request.contextPath}/board/boardView.bo?num=${board.getListnum()}'">
 												<td>${board.getListnum()}</td>
 												<td>${board.getListtitle()}</td>
 												<td>${board.getUserid()}</td>
@@ -71,7 +70,7 @@
 								</c:choose>
 							</tbody>
 						</table>
-						<a href="/board/boardWrite.bo?num=${category}" class="small btn1">글쓰기</a>
+						<a href="${pageContext.request.contextPath}/board/boardWrite.bo?num=${category}" class="small btn1">글쓰기</a>
 					</div>
 				</div>
 			</section>

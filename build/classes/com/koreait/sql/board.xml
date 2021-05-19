@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="BoardListAll" parameterType="hashmap" resultType="listBean">
-		SELECT a.LISTNUM, b.USERID, a.LISTTITLE,a.LISTDATE,a.LIST_READCNT,a.LISTCONTENTS
+		SELECT a.LISTNUM, b.USERID, a.LISTTITLE,a.LISTDATE,a.READCNT,a.LISTCONTENTS
 		FROM TBL_LIST a  
 		INNER JOIN TBL_MEMBER b 
 		ON a.USERNUM = b.USERNUM  
@@ -45,7 +45,7 @@
 	</insert>
 	
 	<insert id="insertList" parameterType="listbean">
-		INSERT INTO TBL_LIST
+		INSERT INTO TBL_LIST (listnum, listtitle, listcontents, usernum,listdate,readcnt)
 		VALUES(LISTSEQ.NEXTVAL,#{listtitle},#{listcontents},#{usernum},SYSDATE,0)
 	</insert>
 	
