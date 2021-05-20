@@ -20,6 +20,7 @@ public class BoardViewAction implements Action{
 		
 		BoardDAO bdao = new BoardDAO();
 		ListBean lists = bdao.getBoardList(num);
+		bdao.sumReadCnt(num);
 		request.setAttribute("board", lists);
 		
 		ActionForward forward = new ActionForward();

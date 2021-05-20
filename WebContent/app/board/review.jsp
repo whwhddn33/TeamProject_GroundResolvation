@@ -1,19 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
-<!--
-	Slate by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
--->
 <html>
 	<head>
 		<title>REVIEW</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
-		<noscript><link rel="stylesheet" href="/assets/css/board/board.css" /></noscript>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
+		<%-- <noscript><link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/board.css" /></noscript> --%>
 	</head>
 	<body class="is-preload">
 

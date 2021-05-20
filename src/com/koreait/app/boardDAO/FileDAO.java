@@ -12,7 +12,9 @@ public class FileDAO {
 	public FileDAO() {
 		sqlsession = sqlfactory.openSession(true);
 	}
+	
 	public boolean insertFile(FileBean file) {
-		return sqlsession.insert("File.insertFile",file)==1;	
+		return sqlsession.insert("File.insertFile",file)==1;
 	}
 }
+

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE HTML>
 <!--
 	Slate by Pixelarity
@@ -13,17 +12,16 @@
 		<title>글보기</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/assets/css/main.css" />
-		<link rel="stylesheet" href="/assets/css/board/board.css" />
-		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/board.css" />
+		<link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body class="is-preload">
-
+		<c:set var="files" value="${requestScope.files}" />
 				
 		<!-- header -->
 		<jsp:include page="/header.jsp"></jsp:include>
 		
-
 		<!-- Main -->
 			<section id="main" class="wrapper boardView">
 				<div class="inner">

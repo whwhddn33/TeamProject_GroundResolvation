@@ -23,11 +23,13 @@ public class BoardDAO {
 		return BoardList;
 	}
 	public List<ListBean> getBoardList(int startRow,int endRow,String category){
+		System.out.println("List<ListBean> getBoardList 실행");
 		HashMap<String,Object> data = new HashMap<>();
 		data.put("startRow",startRow);
 		data.put("endRow", endRow);
 		data.put("category", category);
 		List<ListBean> BoardList = sqlsession.selectList("Board.BoardListAll",data);
+		System.out.println(BoardList);
 		return BoardList;
 	}
 	public ListBean getAdminList(int num){
@@ -39,13 +41,19 @@ public class BoardDAO {
 	public int getBoardSeq() {
 		return (Integer)sqlsession.selectOne("Board.BoardSeq");
 	}
-	public int getBoardCnt() {
-		return (Integer)sqlsession.selectOne("Board.BoardCnt");
+	public int getBoardCnt(int category) {
+		System.out.println(category);
+		return (Integer)sqlsession.selectOne("Board.BoardCnt",category);
 	}
 	public boolean BoardInsert(BoardBean board) {
 		return sqlsession.insert("Board.insertBoard",board) == 1;
 	}
 	public boolean ListInsert(ListBean board) {
+		System.out.println(board.getBoardnum());
+		System.out.println(board.getListnum());
+		System.out.println(board.getListcontents());
+		System.out.println(board.getListtitle());
+		System.out.println(board.getUserid());
 		return sqlsession.insert("Board.insertList",board) == 1;
 	}
 	public boolean BoardDelete(int num) {
@@ -66,5 +74,8 @@ public class BoardDAO {
 		data.put("listcontents",content);
 		data.put("listnum", listnum);
 		sqlsession.update("Board.modifyList",data);
+	}
+	public void sumReadCnt(int num) {
+		sqlsession.update("Board.sumReadCnt",num);
 	}
 }

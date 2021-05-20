@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/team/teamlist.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/team/teamsidebar.css" />
-<noscript><link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/noscript.css" /></noscript>
+<link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="is-preload">
 	<c:set var="list" value="${requestScope.teamList}" />

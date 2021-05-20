@@ -49,11 +49,6 @@
 	
 	</insert>
 
-	<!-- 그라운드정보가져오는 sql -->
-	<select id="grtinfo" parameterType="_int"
-		resultType="groundinfoBean">
-		SELECT * FROM TBL_GROUNDINFO
-		WHERE GROUNDNUM=${GROUNDNUM}
-	</select>
+
 </mapper>
 

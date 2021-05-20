@@ -32,16 +32,10 @@ public class BoardWriteOkAction implements Action{
 		ActionForward forward = new ActionForward();
 		MultipartRequest multi = new MultipartRequest(request, folder,size,"UTF-8",new DefaultFileRenamePolicy());
 		
-		System.out.println("multi객체 :"+multi);
-		
 		board.setListtitle(multi.getParameter("title"));
 		board.setListcontents(multi.getParameter("content"));
-		board.setUsernum(Integer.parseInt(multi.getParameter("usernum")));
-		
-		System.out.println(board.getListtitle());
-		System.out.println(board.getListcontents());
-		System.out.println(board.getUsernum());
-		
+		board.setBoardnum(num);
+		board.setUserid(multi.getParameter("userid"));
 		boolean bchk = false;
 		bchk = bdao.ListInsert(board);
 		
@@ -49,11 +43,17 @@ public class BoardWriteOkAction implements Action{
 		String orgname = multi.getOriginalFileName("file1");
 		boolean fchk = false;
 		if(filename != null && filename != "") {
-			int boardnum = bdao.getBoardSeq();
 			FileBean file = new FileBean();
-			file.setBoardnum(boardnum);
+			file.setBoardnum(num);
 			file.setFilename(filename);
-			file.setRealname(orgname);
+			if (orgname == null) {
+				file.setRealname(filename);
+			}else {
+				file.setRealname(orgname);
+			}
+			System.out.println("파일빈 보드넘 : "+file.getBoardnum());
+			System.out.println("파일빈 파일네임 : "+file.getFilename());
+			System.out.println("파일빈 리얼네임 : "+file.getRealname());
 			fchk = fdao.insertFile(file);
 		}
 		if(! bchk || ! fchk){

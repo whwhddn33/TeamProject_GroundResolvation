@@ -9,6 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/board.css" />
+		<link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body class="is-preload">
 		<c:set var="userid" value="${login_session.userid}" />
@@ -16,7 +17,6 @@
 				
 		<!-- header -->
 		<jsp:include page="/header.jsp"></jsp:include>
-		
 
 		<!-- Main -->
 			<section id="main" class="wrapper">
@@ -45,7 +45,7 @@
 										<label for="message">Content</label>
 										<textarea name="content" id="message" placeholder="내용을 입력하세요." rows="6" ></textarea>
 									</div> 
-									<input type="hidden" name="usernum" id="num" value="1">
+									<input type="hidden" name="userid" id="num" value="${userid}">
 									<div class="col-12">
 										<ul class="actions">
 											<li><button type="submit" class="small btn2">전송</button></li>

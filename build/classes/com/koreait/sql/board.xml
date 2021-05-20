@@ -15,7 +15,8 @@
 	<select id="boardList" parameterType="hashmap" resultType="listBean">
 		SELECT * FROM TBL_LIST a 
 		JOIN TBL_MEMBER b 
-		ON a.USERNUM = b.USERNUM
+		ON a.USERid = b.USERid
+		WHERE a.listnum = ${num}
 	</select>
 	
 	<select id="adminList" parameterType="hashmap" resultType="listBean">
@@ -23,20 +24,17 @@
 	</select>
 	
 	<select id="BoardListAll" parameterType="hashmap" resultType="listBean">
-		SELECT a.LISTNUM, b.USERID, a.LISTTITLE,a.LISTDATE,a.READCNT,a.LISTCONTENTS
-		FROM TBL_LIST a  
-		INNER JOIN TBL_MEMBER b 
-		ON a.USERNUM = b.USERNUM  
-		WHERE a.BOARDNUM = #{category} AND
-		a.LISTNUM BETWEEN ${startRow} AND ${endRow}
+		SELECT b.LISTNUM, b.USERID, b.LISTTITLE,b.LISTDATE,b.READCNT FROM
+		(SELECT ROWNUM r, a.* FROM
+		(SELECT * FROM
+		TBL_LIST
+		WHERE BOARDNUM = #{category}
+		ORDER BY LISTNUM) a) b
+		WHERE b.r BETWEEN ${startRow} AND ${endRow}
 	</select>
 	
-	<select id="BoardSeq" resultType="_int">
-		SELECT BOARDSEQ.CURRVAL FROM DUAL
-	</select>
-	
-	<select id="BoardCnt" resultType="_int">
-		SELECT COUNT(*) FROM TBL_LIST
+	<select id="BoardCnt" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) FROM TBL_LIST where boardnum = ${category}
 	</select>
 	
 	<insert id="insertBoard" parameterType="BoardBean">
@@ -45,8 +43,8 @@
 	</insert>
 	
 	<insert id="insertList" parameterType="listbean">
-		INSERT INTO TBL_LIST (listnum, listtitle, listcontents, usernum,listdate,readcnt)
-		VALUES(LISTSEQ.NEXTVAL,#{listtitle},#{listcontents},#{usernum},SYSDATE,0)
+		INSERT INTO TBL_LIST (listnum, listtitle, listcontents, userid,listdate,readcnt,boardnum)
+		VALUES(LISTSEQ.NEXTVAL,#{listtitle},#{listcontents},#{userid},SYSDATE,0,${boardnum})
 	</insert>
 	
 	<delete id="deleteBoard" parameterType="_int">
@@ -70,4 +68,7 @@
 		WHERE listnum = ${listnum}
 	</update>
 	
+	<update id="sumReadCnt" parameterType="_int">
+		update tbl_list set READCNT = READCNT+1 WHERE LISTNUM = ${num}
+	</update>
 </mapper>

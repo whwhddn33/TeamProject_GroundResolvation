@@ -4,6 +4,7 @@ public class FileBean {
 	private int boardnum;
 	private String filename;
 	private String realname;
+	
 	public int getBoardnum() {
 		return boardnum;
 	}

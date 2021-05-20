@@ -26,8 +26,7 @@
 				<ul>
 					<li><a href="#" class="submenu fa-angle-down">구장관리</a>
 						<ul>
-							<li><a
-								href="${pageContext.request.contextPath}/futsalFrontController/futsallist.fu">구장현황</a></li>
+							<li><a href="${pageContext.request.contextPath}/futsalFrontController/futsallist.fu">구장현황</a></li>
 							<li><a href="${pageContext.request.contextPath}/futsalFrontController/groundregistpage.fu">구장등록</a></li>
 							<li><a href="${pageContext.request.contextPath}/futsalFrontController/registlistpage.fu">등록구장리스트</a></li>
 						</ul>

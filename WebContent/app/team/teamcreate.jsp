@@ -7,9 +7,9 @@
 <meta charset="utf-8" http-equiv="Content-Type" content="text/html"/>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/team/teamcreate.css" />
-<noscript><link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
 		

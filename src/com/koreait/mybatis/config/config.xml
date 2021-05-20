@@ -34,6 +34,7 @@
     <mapper resource="com/koreait/sql/team.xml" />
     <mapper resource="com/koreait/sql/user.xml" />
     <mapper resource="com/koreait/sql/enterpriseuser.xml" />
+    <mapper resource="com/koreait/sql/file.xml" />
   </mappers>
   
 </configuration>

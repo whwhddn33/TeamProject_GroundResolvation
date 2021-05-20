@@ -6,9 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link
-	href="${pageContext.request.contextPath}/assets/css/user/indexBox.css"
-	type="text/css" rel="stylesheet" />
 </head>
 <body>
 	<!-- Header -->
@@ -24,7 +21,7 @@
 		<nav id="nav">
 			<ul>
 				<li><a href="${pageContext.request.contextPath}">Home</a></li>
-				<li><a href="#" class="submenu fa-angle-down">Page Layouts</a>
+				<li><a href="#" class="submenu fa-angle-down">Ground</a>
 					<ul>
 						<li><a
 							href="${pageContext.request.contextPath}/futsalFrontController/futsallist.fu">구장현황</a></li>
