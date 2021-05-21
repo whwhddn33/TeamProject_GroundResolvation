@@ -5,6 +5,10 @@
   
 <mapper namespace="File">
 	<insert id="insertFile" parameterType="fileBean">
-		INSERT INTO TBL_FILE VALUES (${boardnum},#{filename},#{realname})
+		INSERT INTO TBL_FILE VALUES (${boardnum},#{filename},#{realname},${listnum})
 	</insert>
+	
+	<select id="getListInFile" parameterType="hashmap" resultType="boardfileBean">
+		select * from tbl_file where boardnum = ${boardnum} and listnum = ${listnum}
+	</select>
 </mapper>

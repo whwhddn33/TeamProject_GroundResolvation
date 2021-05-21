@@ -47,6 +47,10 @@
 		VALUES(LISTSEQ.NEXTVAL,#{listtitle},#{listcontents},#{userid},SYSDATE,0,${boardnum})
 	</insert>
 	
+	<select id="returnseq" resultType="_int">
+		select listseq.currval from dual
+	</select>
+	
 	<delete id="deleteBoard" parameterType="_int">
 		DELETE FROM TBL_BOARD WHERE boardnum = ${boardnum}
 	</delete>

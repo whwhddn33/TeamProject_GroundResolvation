@@ -110,6 +110,12 @@ public class BoardFrontController extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println(e);
 			}
+		}else if(command.equals("/board/fileDownload.bo")) {
+			try {
+				forward = new DownloadAction().execute(request, response);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		}
 		if(forward != null) {
 			if(forward.isRedirect()) {

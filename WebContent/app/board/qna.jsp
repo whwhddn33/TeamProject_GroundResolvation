@@ -54,7 +54,7 @@
 								<c:choose>
 									<c:when test="${list != null and fn:length(list) > 0 }">
 										<c:forEach var="board" items="${list}">
-											<tr onclick="location.href='${pageContext.request.contextPath}/board/boardView.bo?num=${board.getListnum()}'">
+											<tr onclick="location.href='${pageContext.request.contextPath}/board/boardView.bo?&boardnum=2&num=${board.getListnum()}'">
 												<td>${board.getListnum()}</td>
 												<td>${board.getListtitle()}</td>
 												<td>${board.getUserid()}</td>
@@ -75,18 +75,6 @@
 					</div>
 				</div>
 			</section>
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<p class="copyright">&copy; Untitled Corp. All rights reserved. Lorem ipsum dolor sit amet feugiat tempus aliquam.</p>
-					<ul class="menu">
-						<li><a href="#">Terms<span> of Use</span></a></li>
-						<li><a href="#">Privacy<span> Policy</span></a></li>
-						<li><a href="#">Legal<span> Information</span></a></li>
-					</ul>
-				</div>
-			</footer>
 
 		<!-- Scripts -->
 			<script src="/assets/js/jquery.min.js"></script>

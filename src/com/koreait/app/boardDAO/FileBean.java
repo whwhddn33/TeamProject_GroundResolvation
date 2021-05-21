@@ -2,6 +2,7 @@ package com.koreait.app.boardDAO;
 
 public class FileBean {
 	private int boardnum;
+	private int listnum;
 	private String filename;
 	private String realname;
 	
@@ -10,6 +11,12 @@ public class FileBean {
 	}
 	public void setBoardnum(int boardnum) {
 		this.boardnum = boardnum;
+	}
+	public int getListnum() {
+		return listnum;
+	}
+	public void setListnum(int listnum) {
+		this.listnum = listnum;
 	}
 	public String getFilename() {
 		return filename;

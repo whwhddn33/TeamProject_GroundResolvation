@@ -12,6 +12,7 @@
   	<typeAlias type="com.koreait.app.boardDAO.ListBean" alias = "listBean"/>
   	<typeAlias type="com.koreait.app.teamDAO.TeamBean" alias = "teamBean"/>
   	<typeAlias type="com.koreait.app.teamDAO.TeamFileBean" alias = "fileBean"/>
+  	<typeAlias type="com.koreait.app.boardDAO.FileBean" alias = "boardfileBean"/>
   	<typeAlias type="com.koreait.app.userDAO.UserBean" alias = "userbean"/>
   	<typeAlias type="com.koreait.app.userDAO.EnterpriseUserBean" alias = "euserbean"/>
   </typeAliases>

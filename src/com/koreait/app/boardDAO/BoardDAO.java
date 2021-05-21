@@ -26,7 +26,7 @@ public class BoardDAO {
 		System.out.println("List<ListBean> getBoardList 실행");
 		HashMap<String,Object> data = new HashMap<>();
 		data.put("startRow",startRow);
-		data.put("endRow", endRow);
+		data.put("endRow", 100);
 		data.put("category", category);
 		List<ListBean> BoardList = sqlsession.selectList("Board.BoardListAll",data);
 		System.out.println(BoardList);
@@ -77,5 +77,8 @@ public class BoardDAO {
 	}
 	public void sumReadCnt(int num) {
 		sqlsession.update("Board.sumReadCnt",num);
+	}
+	public int returnseq() {
+		return sqlsession.selectOne("Board.returnseq");
 	}
 }

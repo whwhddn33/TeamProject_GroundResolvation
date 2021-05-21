@@ -1,5 +1,7 @@
 package com.koreait.app.boardDAO;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.session.SqlSession;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -16,5 +18,11 @@ public class FileDAO {
 	public boolean insertFile(FileBean file) {
 		return sqlsession.insert("File.insertFile",file)==1;
 	}
-}
 
+	public FileBean getListInFile(int num, int boardnum) {
+		HashMap<String, Integer> requestnum = new HashMap<>();
+		requestnum.put("boardnum", boardnum);
+		requestnum.put("listnum", num);
+		return sqlsession.selectOne("File.getListInFile",requestnum);
+	}
+}

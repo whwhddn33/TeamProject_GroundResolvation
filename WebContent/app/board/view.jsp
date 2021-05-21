@@ -17,7 +17,7 @@
 		<link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body class="is-preload">
-		<c:set var="files" value="${requestScope.files}" />
+		<c:set var="file" value="${requestScope.file}" />
 				
 		<!-- header -->
 		<jsp:include page="/header.jsp"></jsp:include>
@@ -68,13 +68,13 @@
 									<div>${board.getListcontents() }</div>
 								</div>
 								<c:choose>
-									<c:when test="${files.size() != 0 and files != null}">
+									<c:when test="${file != null}">
 										<div class="imgWrap">
 											<div>첨부파일</div>
 											<div>
-												<a href="/board/fileDownload.bo?
-												filename=${files.getFilename()}&realname=${files.getRealname()}">
-												${files.getRealname()}
+												<a href="${pageContext.request.contextPath}/board/fileDownload.bo?
+												filename=${file.getFilename()}&realname=${file.getRealname()}">
+												${file.getRealname()}
 												</a>
 											</div>
 										</div>
