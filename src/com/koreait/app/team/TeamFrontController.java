@@ -28,7 +28,8 @@ public class TeamFrontController extends HttpServlet {
 		String command = requestURI.substring(contextPath.length());
 //		System.out.println(command); //   /team/TeamCreateOk.te
 		ActionForward forward = null;
-
+		System.out.println("팀컨트롤러");
+		System.out.println("요청 URI : "+ requestURI);
 		//팀 생성하기
 		if(command.equals("/team/TeamCreateOk.te")) {
 			try {
@@ -44,6 +45,16 @@ public class TeamFrontController extends HttpServlet {
 				out.close();
 			}
 		//팀명 체크	
+		}else if (command.equals("/team/teamCreate.te")) {
+			try {
+				System.out.println("/team/TeamCreate.te");
+				forward = new ActionForward();
+				forward.setPath(contextPath+"/app/team/teamcreate.jsp");
+				forward.setRedirect(true);
+			} catch (Exception e) {
+				System.out.println("/team/TeamCreate.te 오류");
+				System.out.println(e);
+			}
 		}else if (command.equals("/team/TeamNameCheck.te")) {
 			try {
 				forward=new TeamNameCheckOkAction().execute(request,response);
@@ -51,16 +62,9 @@ public class TeamFrontController extends HttpServlet {
 				System.out.println("/team/TeamNameCheck.te 오류 / 팀명 체크");
 				System.out.println(e);
 			}
-		//form 입력 체크	
-		}else if(command.equals("/team/TeamInputCheck.te")) {
-			try {
-				forward=new TeamInputOkAction().execute(request, response);
-			} catch (Exception e) {
-				System.out.println("/team/TeamNameCheck.te 오류 / 입력 체크");
-				e.printStackTrace();
-			}
 		}else if (command.equals("/team/TeamList.te")) {
 			try {
+				System.out.println("/team/TeamList.te");
 				forward=new TeamListAction().execute(request,response);
 			} catch (Exception e) {
 				System.out.println("/team/TeamList.te 오류");
@@ -80,7 +84,25 @@ public class TeamFrontController extends HttpServlet {
 				System.out.println("/team/TeamModify.te 오류");
 				e.printStackTrace();
 			}
+		}else if (command.equals("/team/TeamJoin.te")) {
+			try {
+				forward = new ActionForward();
+				System.out.println("teamjoin teamno : " + request.getParameter("teamNo"));
+				request.setAttribute("teamNo", request.getParameter("teamNo"));
+				forward.setPath("/app/team/teamjoin.jsp");
+			} catch (Exception e) {
+				System.out.println("/team/Teamjoin.te 오류");
+				e.printStackTrace();
+			}
+		}else if (command.equals("/team/TeamJoinOK.te")) {
+		try {
+			forward=new TeamJoinOkAction().execute(request, response);
+		} catch (Exception e) {
+			System.out.println("/team/TeamJoinOK.te 오류");
+			e.printStackTrace();
 		}
+	}
+		
 		if(forward!=null) {
 			if(forward.isRedirect()) {
 				//redirect 방식

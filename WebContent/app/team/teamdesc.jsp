@@ -16,15 +16,10 @@
 		
 		<!-- header -->
 		<jsp:include page="/header.jsp"></jsp:include>
-		
 
 		<!-- Main -->
 			<section id="main" class="wrapper sidebar left">
 				<div class="inner">
-<!-- 					<header class="major">
-						<h2>Left Sidebar</h2>
-					</header> -->
-
 					<!-- 내용 -->
 						<c:set var="teamName" value="${requestScope.teamName }"/>
 						<c:set var="teamLocal" value="${requestScope.teamLocal }"/>
@@ -58,14 +53,14 @@
 		  								</div>
 		  								<!-- info_list end -->
 		  								<div class="join_button"> 
-		  									<input type="button" value="가입하기" class="button small">
+		  									<a href = "${pageContext.request.contextPath}/team/TeamJoin.te?teamNo=${teamNo}" class="button small">가입하기</a>
 		  								</div>
 		  								<!-- join_button end -->
 	  								</div>
 	  								<!-- info_wrap end -->
 	  							</div>	
 	  							<!-- team_info end -->
-	  							<div class="middle_wrap">
+<!-- 	  							<div class="middle_wrap">
 		  							<div class="winning_rate">
 		  								<div class="table_wrap">
 			  								<table class="winning_table">
@@ -96,19 +91,19 @@
 									           </tbody>
 			  								</table>
 		  								</div>
-		  								<!-- table_wrap end -->
+		  								table_wrap end
 		  							</div>
-		  							<!-- winning_rate end -->
+		  							winning_rate end
 		  							<div class="score_chart">
 		  								<div class="chart_wrap">
 		  									<div class="chart" id="chart">
 		  									</div>
-		  									<!-- chart end -->
+		  									chart end
 		  								</div>
-		  								<!-- chart_wrap end -->
+		  								chart_wrap end
 		  							</div>
-		  							<!-- score_chart end -->
-	  							</div>
+		  							score_chart end
+	  							</div> -->
 	  							<!-- middle_wrap end -->
 	  							<div class="member_wrap">
 	  								<div class="blank_space">
@@ -118,26 +113,37 @@
 	  								<table class="member_list">
 										<thead>
 											<tr>
-												<th width="7%">번호</th>
-												<th width="53%">닉네임</th>
-												<th width="20%">연령</th>
-												<th width="20%">포지션</th>
+												<th>이름</th>
+												<th>닉네임</th>
+												<th>키</th>
+												<th>몸무게</th>
+												<th>사용발</th>
+												<th>주포지션</th>
+												<th>부포지션</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr hegiht="50px" align="center">
-												<td colspan="5">가입한 선수가 없습니다.</td>
+											<c:forEach var="i" items="${memberList}">
+											<tr align="center">
+												<td>${i.username}</td>
+												<td>${i.nickname}</td>
+												<td>${i.userheight}</td>
+												<td>${i.userweight}</td>
+												<td>${i.usefoot}</td>
+												<td>${i.mainposition}</td>
+												<td>${i.minorposition}</td>
 											</tr>
+											</c:forEach>
 										</tbody>
 										<tfoot>
 										</tfoot>
 									</table>
 	  							</div>
-	  							<div class="schedule_wrap">
+<!-- 	  							<div class="schedule_wrap">
 	  								<div class="blank_space">
 	  									경기 일정
 	  								</div>
-	  								<!-- blank_space end -->
+	  								blank_space end
 	  								<table class="match_schedule">
 										<thead>
 											<tr>
@@ -155,7 +161,7 @@
 										<tfoot>
 										</tfoot>
 									</table>
-	  							</div>
+	  							</div> -->
 	  							<!-- schedule_wrap end -->
 							</div>
 							<!-- desc_wrap end -->
@@ -178,14 +184,14 @@
 	<!-- Scripts -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="../../assets/js/team/teamdesc.js"></script>
-	<script src="../../assets/js/jquery.min.js"></script>
-	<script src="../../assets/js/jquery.dropotron.min.js"></script>
-	<script src="../../assets/js/jquery.scrollex.min.js"></script>
-	<script src="../../assets/js/browser.min.js"></script>
-	<script src="../../assets/js/breakpoints.min.js"></script>
-	<script src="../../assets/js/util.js"></script>
-	<script src="../../assets/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/team/teamdesc.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 	<script> var contextPath = "${pageContext.request.contextPath}";</script>
 </body>
 </html>

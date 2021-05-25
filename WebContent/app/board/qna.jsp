@@ -3,11 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE HTML>
-<!--
-	Slate by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
--->
 <html>
 	<head>
 		<title>1:1 문의하기</title>
@@ -54,7 +49,7 @@
 								<c:choose>
 									<c:when test="${list != null and fn:length(list) > 0 }">
 										<c:forEach var="board" items="${list}">
-											<tr onclick="location.href='${pageContext.request.contextPath}/board/boardView.bo?&boardnum=2&num=${board.getListnum()}'">
+											<tr id = contentslist onclick="location.href='${pageContext.request.contextPath}/board/boardView.bo?&boardnum=2&num=${board.getListnum()}'">
 												<td>${board.getListnum()}</td>
 												<td>${board.getListtitle()}</td>
 												<td>${board.getUserid()}</td>
@@ -77,13 +72,13 @@
 			</section>
 
 		<!-- Scripts -->
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/jquery.dropotron.min.js"></script>
-			<script src="/assets/js/jquery.scrollex.min.js"></script>
-			<script src="/assets/js/browser.min.js"></script>
-			<script src="/assets/js/breakpoints.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 
 	</body>
 </html>

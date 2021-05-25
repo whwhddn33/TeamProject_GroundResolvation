@@ -35,10 +35,14 @@ public class TeamListAction implements Action{
 		request.setAttribute("nowPage", page);
 		request.setAttribute("startPage",startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("boardList", tdao.getTeamList(startRow,endRow));
-		
+		request.setAttribute("teamList", tdao.getTeamList(startRow,endRow));
+		System.out.println(totalPage);
+		System.out.println(totalCnt);
+		System.out.println(page);
+		System.out.println(startPage);
+		System.out.println(endPage);
 		forward.setRedirect(false);
-		forward.setPath(request.getContextPath()+"/app/team/teamlist.jsp");
+		forward.setPath("/app/team/teamlist.jsp");
 		return forward;
 	}
 

@@ -29,8 +29,8 @@ public class TeamDAO {
 		return 0==(Integer)sqlsession.selectOne("Team.checkName", teamName);
 	}
 	//팀 상세보기
-	public List<TeamBean> showTeamDesc(String teamNo) {
-		List<TeamBean> showTeam=sqlsession.selectList("Team.teamDesc",teamNo);
+	public TeamBean showTeamDesc(int teamNo) {
+		TeamBean showTeam=sqlsession.selectOne("Team.teamDesc",teamNo);
 		System.out.println(showTeam);
 		return showTeam;
 	}
@@ -49,6 +49,12 @@ public class TeamDAO {
 		datas.put("endRow", endRow);
 		List<TeamBean> teamList = sqlsession.selectList("Team.teamListAll", datas);
 		return teamList;
+	}
+	public int insertMember(TeamListBean joinMember) {
+		return sqlsession.insert("Team.insertTeamMember",joinMember);
+	}
+	public List<TeamListBean> getMemberList(String teamNo) {
+		return sqlsession.selectList("Team.getTeamMember", teamNo);
 	}
 
 }

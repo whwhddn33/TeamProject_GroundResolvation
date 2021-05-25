@@ -15,15 +15,11 @@ function sendIt(){
 	}if (checkText.innerHTML != "사용 가능한 팀명입니다.") {
 		alert("아이디 중복검사를 먼저 해주세요");
 		return false;
-	}if(checkInput.innerHTML != "주장 이름을 입력해 주세요"){
-		alert("주장 이름을 입력해 주세요");
-		return false;
-	}	
-/*	if(createform.captainname.value=="" || createform.captainname.value==null){
+	}if(createform.captainname.value=="" || createform.captainname.value==null){
 		alert("주장이름을 입력해 주세요");
 		createform.captainname.focus();
 		return false;
-	}*/if(createform.teamtel.value=="" || createform.teamtel.value==null){
+	}if(createform.teamtel.value=="" || createform.teamtel.value==null){
 		alert("전화번호를 입력해 주세요");
 		createform.teamtel.focus();
 		return false;
@@ -78,29 +74,8 @@ function checkName(){
               }
       });
     });
- 
   }
-function checkInput(){
-    return new Promise(function(resolve, reject){
-      console.log('두번째 실행');
-      var captainName=$('input[name=captainname]').val();
-      console.log(captainName);
-      $.ajax({
-    	  url:contextPath+'/team/TeamInputCheck.te', 
-    	  type:'post',
-    	  data:"captainname="+captainName,
-        success : function(data){
-        	console.log($.trim(data));
-        	if($.trim(data)=="fail"){
-        		$('#checkInput').html("주장 이름을 입력해 주세요");
-        		$("#checkInput").css("color", "#f44336");
-        		resolve();
-        	}
-              }
-      });
-    });
- 
-  }
+
 function successFunction(){
 	console.log('성공');
   return false;

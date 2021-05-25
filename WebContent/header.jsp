@@ -23,13 +23,14 @@
 				<li><a href="${pageContext.request.contextPath}">Home</a></li>
 				<li><a href="#" class="submenu fa-angle-down">Ground</a>
 					<ul>
-						<li><a
-							href="${pageContext.request.contextPath}/futsalFrontController/futsallist.fu">구장현황</a></li>
-						<li><a
-							href="${pageContext.request.contextPath}/TeamFrontController/TeamList.te">팀
-								목록 보기</a></li>
-					</ul></li>
-
+						<li><a href="${pageContext.request.contextPath}/futsalFrontController/futsallist.fu">구장현황</a></li>
+					</ul>
+				</li>
+				<li><a href="#" class="submenu fa-angle-down">Team</a>
+					<ul>
+						<li><a href="${pageContext.request.contextPath}/team/teamCreate.te">팀 생성</a></li>
+						<li><a href="${pageContext.request.contextPath}/team/TeamList.te">팀 목록 보기</a></li>
+					</ul>
 				<c:choose>
 					<c:when test="${login_session.userid eq 'admin'}">
 					
@@ -59,9 +60,9 @@
 
 				<c:choose>
 					<c:when test="${login_session ne null}">
-						<li><a
-							href="${pageContext.request.contextPath}/app/user/logOut.me"
-							class="button" id="logOutBtn">Log Out</a></li>
+						<li>
+							<a href="${pageContext.request.contextPath}/app/user/logOut.me" class="button" id="logOutBtn">Log Out</a>
+						</li>
 					</c:when>
 					<c:otherwise>
 						<li><a href="#" onclick="signupBtnClick()" class="button">Sign
@@ -71,7 +72,6 @@
 				</c:choose>
 			</ul>
 		</nav>
-
 	</header>
 
 </body>

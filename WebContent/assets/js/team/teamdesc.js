@@ -1,4 +1,4 @@
-google.charts.load('current', {packages: ['corechart', 'line']});
+/*google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(drawBasic);
 
 function drawBasic() {
@@ -43,4 +43,4 @@ function drawBasic() {
      };
       chart.draw(data, options);
       
-    }
+    }*/

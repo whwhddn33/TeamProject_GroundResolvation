@@ -40,6 +40,13 @@
 	</select>
 	<!-- 팀 정보수정 -->
 	<update id="teamModify" parameterType="teamBean">
-		UPDATE SET WHERE
 	</update>
+	<insert id="insertTeamMember">
+		INSERT INTO TBL_TEAMLIST
+		VALUES(seq_teamlist.nextval, ${teamNo} ,#{username} ,#{nickname} ,#{userheight} ,#{userweight} ,#{usefoot} ,#{mainposition} ,#{minorposition} ,#{usertel})
+	</insert>
+	
+	<select id="getTeamMember" parameterType="String" resultType="teamlistBean">
+		select * from tbl_teamList where teamno = #{teamNo}
+	</select>
 </mapper>

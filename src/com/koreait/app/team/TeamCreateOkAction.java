@@ -48,6 +48,7 @@ public class TeamCreateOkAction implements Action{
 			teamInsertCheck=true;
 			System.out.println("팀생성 완료");
 		}
+		
 		fileName=multi.getFilesystemName("teamlogo_image");
 		if(fileName ==null) {fileCheck=true;}
 		orgName=multi.getOriginalFileName("teamlogo_image");
@@ -67,7 +68,7 @@ public class TeamCreateOkAction implements Action{
 		}else {
 			System.out.println("Check true!");
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath()+"/app/team/TeamList.te");
+			forward.setPath(request.getContextPath()+"/team/TeamList.te");
 		}
 		return forward;
 	}

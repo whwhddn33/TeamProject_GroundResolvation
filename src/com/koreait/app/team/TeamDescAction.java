@@ -1,5 +1,7 @@
 package com.koreait.app.team;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,6 +9,7 @@ import com.koreait.action.Action;
 import com.koreait.action.ActionForward;
 import com.koreait.app.teamDAO.TeamBean;
 import com.koreait.app.teamDAO.TeamDAO;
+import com.koreait.app.teamDAO.TeamListBean;
 
 public class TeamDescAction implements Action {
 	@Override
@@ -17,18 +20,22 @@ public class TeamDescAction implements Action {
 		TeamDAO tdao=new TeamDAO();
 		
 		String teamNo=request.getParameter("teamNo");
-		String teamName=request.getParameter("teamName");
-		String teamLocal=request.getParameter("teamLocal");
-		String teamLevel=request.getParameter("teamLevel");
-		
-		if(tdao.showTeamDesc(teamNo) != null) {
+		request.setAttribute("teamNo", teamNo);
+		System.out.println("teamNo : "+teamNo);
+		int teamNo_Int =Integer.parseInt(teamNo);
+		TeamBean team = new TeamBean();
+		team = tdao.showTeamDesc(teamNo_Int);
+		if(tdao.showTeamDesc(teamNo_Int) != null) {
 			System.out.println("팀번호 있음");
-			request.setAttribute("teamName", teamName);
-			request.setAttribute("teamLocal", teamLocal);
-			request.setAttribute("teamLevel", teamLevel);
+			request.setAttribute("teamName", team.getTeamName());
+			request.setAttribute("teamLocal", team.getTeamLocal());
+			request.setAttribute("teamLevel", team.getTeamLevel());
 		}
+		
+		List<TeamListBean> teamMember = tdao.getMemberList(teamNo);
+		request.setAttribute("memberList", teamMember);
 		forward.setRedirect(false);
-		forward.setPath(request.getContextPath()+"/app/team/TeamDesc.te");
+		forward.setPath("/app/team/teamdesc.jsp");
 		return forward;
 	}
 	

@@ -28,7 +28,7 @@ public class UserLoginOkAction implements Action{
 			forward.setPath(request.getContextPath()+"/");
 		}else {
 			forward.setPath(request.getContextPath()+"/app/user/loginView.me"); 
-			System.out.println("·Î±×ÀÎ ½ÇÆÐ!");
+			System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!");
 		}
 		forward.setRedirect(true);
 		return forward;

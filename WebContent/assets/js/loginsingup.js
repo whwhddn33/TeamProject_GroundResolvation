@@ -14,7 +14,7 @@ var ctx = window.location.pathname.substring(0, window.location.pathname.indexOf
 		tag +='<div class = indexBox>';
 		tag +='<div id = indexlogo>회원가입</div>';
 		tag +='<button id = joinbtn1 type = "button" onclick="location.href =\''+ctx+'/app/user/joinIndividualView.me\'"><i class="fas fa-male"></i><br><br>개인</button>'
-		tag +='<button id = joinbtn2 type = "button" onclick="location.href =\''+ctx+'${pageContext.request.contextPath}/app/user/joinEnterpriseView.me\'"><i class="far fa-building"></i><br><br>기업</button>'
+		tag +='<button id = joinbtn2 type = "button" onclick="location.href =\''+ctx+'/app/user/joinEnterpriseView.me\'"><i class="far fa-building"></i><br><br>기업</button>'
 		tag +='</div>';
 			$('#indexBtn').html(tag);
 	}

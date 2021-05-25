@@ -1,6 +1,5 @@
 function sendIt(){
 	const joinform=document.joinform;
-	
 	if(joinform.username.value=="" || joinform.username.value==null){
 		alert("이름을 입력해 주세요");
 		joinform.username.focus();
@@ -17,5 +16,8 @@ function sendIt(){
 		alert("주 포지션을 입력해 주세요");
 		joinform.mainposition.focus();
 		return false;
-	}		
+	}else{
+		$(joinform).submit();
+	}
+	
 }

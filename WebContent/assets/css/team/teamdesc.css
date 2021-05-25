@@ -33,7 +33,7 @@
 }
 .logo_image{
 	border : 12px solid white;
-	background-image: url("/images/team/noimage.png");
+	background-image: url(/images/team/noimage.png);
 	background-position:50% 50%; 
 	background-size:cover; 
 	background-repeat:no-repeat; 
@@ -99,7 +99,6 @@ th,td{
 }
 .member_wrap{
 	width: 100%;
-    height: 400px;
     background-color: #BBB;
     float: left;
 }
