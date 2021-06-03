@@ -9,8 +9,11 @@ import javax.servlet.http.HttpSession;
 
 import com.koreait.action.Action;
 import com.koreait.action.ActionForward;
+import com.koreait.app.boardDAO.FileBean;
 import com.koreait.app.futsalDAO.FutsalDAO;
 import com.koreait.app.futsalDAO.GroundInfoBean;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class GroundRegistAction implements Action{
 
@@ -18,8 +21,8 @@ public class GroundRegistAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		ActionForward forward= new ActionForward();
 		String contextPath = request.getContextPath();
+		ActionForward forward= new ActionForward();
 
 		GroundInfoBean ginfobean = new GroundInfoBean();
 		FutsalDAO fdao = new FutsalDAO();
@@ -31,24 +34,31 @@ public class GroundRegistAction implements Action{
 			System.out.println(name + " : " + request.getParameter(name)); 
 		}
 
-		String groundname = request.getParameter("groundname");
-		String epuserid = request.getParameter("epuserid");
-		String hashTag = request.getParameter("hashTag");
-		String useraddr = request.getParameter("useraddr");
-		String useraddrdetail = request.getParameter("useraddrdetail");
-		String useraddretc = request.getParameter("useraddretc");
-		String userpostcode = request.getParameter("userpostcode");
-		String weekDayBasicFee = request.getParameter("weekDayBasicFee");
-		String weekEndBasicFee = request.getParameter("weekEndBasicFee");
-		String groundarea = request.getParameter("groundarea1")+"*"+request.getParameter("groundarea2");
+		String folder = request.getServletContext().getRealPath("app/futsal/img");
+		int size = 1024 * 1024 * 300;
+		MultipartRequest multi = new MultipartRequest(request, folder,size,"UTF-8",new DefaultFileRenamePolicy());
+		
+		String imgname = multi.getFilesystemName("file");
+		String imgrealname = multi.getOriginalFileName("file");
+		
+		String groundname = multi.getParameter("groundname");
+		String epuserid = multi.getParameter("epuserid");
+		String hashTag = multi.getParameter("hashTag");
+		String useraddr = multi.getParameter("useraddr");
+		String useraddrdetail = multi.getParameter("useraddrdetail");
+		String useraddretc = multi.getParameter("useraddretc");
+		String userpostcode = multi.getParameter("userpostcode");
+		String weekDayBasicFee = multi.getParameter("weekDayBasicFee");
+		String weekEndBasicFee = multi.getParameter("weekEndBasicFee");
+		String groundarea = multi.getParameter("groundarea1")+"*"+multi.getParameter("groundarea2");
 
-		String weekDaystarttime = request.getParameter("weekDaystarttime");
-		String weekDayendtime = request.getParameter("weekDayendtime");
-		String weekDayHotTimeFee = request.getParameter("weekDayHotTimeFee");
+		String weekDaystarttime = multi.getParameter("weekDaystarttime");
+		String weekDayendtime = multi.getParameter("weekDayendtime");
+		String weekDayHotTimeFee = multi.getParameter("weekDayHotTimeFee");
 
-		String weekEndstarttime = request.getParameter("weekEndstarttime");
-		String weekEndEndtime = request.getParameter("weekEndEndtime");
-		String weekEndHotTimeFee = request.getParameter("weekEndHotTimeFee");
+		String weekEndstarttime = multi.getParameter("weekEndstarttime");
+		String weekEndEndtime = multi.getParameter("weekEndEndtime");
+		String weekEndHotTimeFee = multi.getParameter("weekEndHotTimeFee");
 
 		ginfobean.setEpuserid(epuserid);
 		ginfobean.setGroundname(groundname);
@@ -60,7 +70,15 @@ public class GroundRegistAction implements Action{
 		ginfobean.setHashTag(hashTag);
 		ginfobean.setWeekDayBasicFee(weekDayBasicFee);
 		ginfobean.setWeekEndBasicFee(weekEndBasicFee);
-
+		
+		if(imgname != null && imgname != "") {
+			ginfobean.setImgname(imgname);
+			ginfobean.setImgrealname(imgrealname);
+		}else {
+			ginfobean.setImgname("");
+			ginfobean.setImgrealname("");
+		}
+		
 		HashMap<String, String> weekDayHotTimeMap = new HashMap<>();
 		weekDayHotTimeMap.put("weekDayHotTimeFee", weekDayHotTimeFee);
 		weekDayHotTimeMap.put("weekDaystarttime", weekDaystarttime);
@@ -102,14 +120,14 @@ public class GroundRegistAction implements Action{
 				}
 			}
 
-			forward.setPath(contextPath+"/app/futsal/registlist.jsp");
+			forward.setPath(contextPath+"/futsalFrontController/registlistpage.fu?epuserid="+epuserid);
 			forward.setRedirect(true);
 			return forward;
 		}
 
 
 
-		forward.setPath(contextPath+"/app/futsal/groundregist.jsp");
+		forward.setPath(contextPath+"/futsalFrontController/registlistpage.fu?epuserid="+epuserid);
 		forward.setRedirect(true);
 		return forward;
 	}

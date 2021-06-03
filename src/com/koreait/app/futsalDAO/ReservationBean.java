@@ -1,18 +1,26 @@
 package com.koreait.app.futsalDAO;
 
-public class ReservationBean {
-	private int 		reservation;
-	private String 		userid;
-	private int 		groundnum;
-	private String 		groundtime;
-	private String 		groundfee;
-	private String 		rservationdate;
-	private String		epuserid;
-	public int getReservation() {
-		return reservation;
+public class reservationBean {
+	private String reservationnum;
+	private String userid;
+	private String groundtime;
+	private String reservationdate;
+	private String reservationpay;
+	private String paydate;
+	
+	public reservationBean() {}
+	
+	public String getGroundtime() {
+		return groundtime;
 	}
-	public void setReservation(int reservation) {
-		this.reservation = reservation;
+	public void setGroundtime(String groundtime) {
+		this.groundtime = groundtime;
+	}
+	public String getReservationnum() {
+		return reservationnum;
+	}
+	public void setReservationnum(String reservationnum) {
+		this.reservationnum = reservationnum;
 	}
 	public String getUserid() {
 		return userid;
@@ -20,35 +28,25 @@ public class ReservationBean {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public int getGroundnum() {
-		return groundnum;
+	public String getReservationdate() {
+		return reservationdate;
 	}
-	public void setGroundnum(int groundnum) {
-		this.groundnum = groundnum;
+	public void setReservationdate(String reservationdate) {
+		this.reservationdate = reservationdate;
 	}
-	public String getGroundtime() {
-		return groundtime;
+	public String getReservationpay() {
+		return reservationpay;
 	}
-	public void setGroundtime(String groundtime) {
-		this.groundtime = groundtime;
+	public void setReservationpay(String reservationpay) {
+		this.reservationpay = reservationpay;
 	}
-	public String getGroundfee() {
-		return groundfee;
+	public String getPaydate() {
+		return paydate;
 	}
-	public void setGroundfee(String groundfee) {
-		this.groundfee = groundfee;
+	public void setPaydate(String paydate) {
+		this.paydate = paydate;
 	}
-	public String getRservationdate() {
-		return rservationdate;
-	}
-	public void setRservationdate(String rservationdate) {
-		this.rservationdate = rservationdate;
-	}
-	public String getEpuserid() {
-		return epuserid;
-	}
-	public void setEpuserid(String epuserid) {
-		this.epuserid = epuserid;
-	}
+	
+	
 	
 }

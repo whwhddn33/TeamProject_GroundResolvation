@@ -72,11 +72,10 @@
 						<!-- 페이징 -->
 									<div align="center">
 										<ul class="pagination">
-												<li><span class="button disabled">Prev</span></li>
 												<li>
 													<c:choose>
 														<c:when test="${nowPage>1}">
-															<a href="${pageContext.request.contextPath}/team/TeamList.te?page=${nowPage-1}" class="button disabled">이전</a>
+															<a href="${pageContext.request.contextPath}/team/TeamList.te?page=${nowPage-1}" class="button">이전</a>
 														</c:when>
 													</c:choose> <c:forEach var="i" begin="${startPage}" end="${endPage}">
 													<c:choose>
@@ -91,22 +90,9 @@
 														<a href="${pageContext.request.contextPath}/team/TeamList.te?page=${nowPage+1}" class="button">다음</a>
 													</c:if>
 												</li>
-												<li><a href="#" class="button">Next</a></li>
 										</ul>
 									</div>			
 					</div>
-				
-			<!-- Sidebar -->
-							<div class="sidebar">
-									<a href="/" class="navbar-brand"><img src="/images/logo3.png" alt="" /></a>
-										<div class="create_team" onclick="location.herf'#';">
-												팀 생성하기
-										</div>
-										<div class="team_list" onclick="location.href='${pageContext.request.contextPath}/team/TeamList.te';" class="team_list">
-												팀 목록보기
-										</div>
-							</div>
-				</div>
 			</secion>
 
 

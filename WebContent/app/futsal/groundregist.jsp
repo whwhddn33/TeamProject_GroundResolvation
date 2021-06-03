@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/groundregist.css" />
+<link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 
@@ -21,7 +22,7 @@
 					<div id = mainString>구장등록하기</div>
 				</div>
 					<!-- 폼태그-->
-				<form name = registForm action="${pageContext.request.contextPath}/futsalFrontController/groundregist.fu" method="get">
+				<form name = registForm action="${pageContext.request.contextPath}/futsalFrontController/groundregist.fu" method="post" enctype="multipart/form-data">
 					<div id = form1wrapper>
 						<div class = infoString>구장이름</div>
 							<input name ="groundname" type="text" placeholder="구장이름"><br>
@@ -31,15 +32,16 @@
 							x
 							<input class = area name = "groundarea2" type="text" placeholder="세로"><br>
 							<br>
-							<button type="button">구장이미지등록</button>
+							<label id = filelable for = file>이미지등록</label>
+							<input type="file" name = file id = file >
 						<div class = infoString>구장주소</div>
 						<div class="input-wrapper flex">
 							<input type="text" name="userpostcode" id="sample6_postcode"
-								placeholder="우편번호" class="input-address-text"> <input
-								type="button" onclick="sample6_execDaumPostcode()"
+								placeholder="우편번호" class="input-address-text">
+							<input type="button" onclick="sample6_execDaumPostcode()"
 								value="우편번호 찾기" class="input-button"><br>
 						</div>
-
+							<br>	
 						<input type="text" name="useraddr" id="sample6_address"
 							placeholder="주소" class="input-address-text"><br>
 

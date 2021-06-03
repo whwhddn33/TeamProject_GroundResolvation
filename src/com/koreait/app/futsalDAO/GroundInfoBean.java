@@ -12,8 +12,36 @@ public class GroundInfoBean {
 	private String hashTag;
 	private String weekDayBasicFee;
 	private String weekEndBasicFee;
+	private String imgname;
+	private String imgrealname;
 	
+	
+
 	public GroundInfoBean() {};
+	
+	public void setGroundnum(String groundnum) {
+		this.groundnum = groundnum;
+	}
+
+	public String getGroundnum() {
+		return groundnum;
+	}
+	
+	public String getImgname() {
+		return imgname;
+	}
+	
+	public void setImgname(String imgname) {
+		this.imgname = imgname;
+	}
+	
+	public String getImgrealname() {
+		return imgrealname;
+	}
+	
+	public void setImgrealname(String imgrealname) {
+		this.imgrealname = imgrealname;
+	}
 
 	public String getEpuserid() {
 		return epuserid;
@@ -23,9 +51,6 @@ public class GroundInfoBean {
 		this.epuserid = epuserid;
 	}
 	
-	public String getGroundnum() {
-		return groundnum;
-	}
 	
 	public String getGroundname() {
 		return groundname;

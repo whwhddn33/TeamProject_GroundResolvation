@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/futsal/calendar.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/futsal/futsallist.css" />
-
+<link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
 </head>
 <body id = "futsalbody"class="is-preload">
 
@@ -49,7 +49,7 @@
 			<hr/>
 			
 			<div id = mapwrapper>
-				<div id="map"></div>
+				<div id = makeMap></div>
 			</div>
 			
 			<div id = line></div>
@@ -77,19 +77,13 @@
 	<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/futsal/calenderMaker.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=563cdd8507ac7e3ee9a21bace94dd5e2&libraries=services"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/futsal/ajaxlist.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/futsal/weatherSetter.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=563cdd8507ac7e3ee9a21bace94dd5e2"></script>
 	<script>
-	var mapContainer = document.getElementById('map'),
-	    mapOption = { 
-	        center: new kakao.maps.LatLng(37.5642135, 127.001698),
-	        level: 10
-	    };
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
+
 	</script>
 <script>
-
 $(document).ready(function(){
 	var getdangi = ${getDangi};
 	var getjungi = ${getJungi};

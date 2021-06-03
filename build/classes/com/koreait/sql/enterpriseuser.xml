@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="EUser">
+
 	<insert id="join" parameterType="euserbean">
 		INSERT INTO tbl_enterprisemember
 		VALUES(#{epuserid},#{epuserpw},#{epusername},#{epuserphone},#{epusernumber})
 	</insert>
-	<select id="login" parameterType="hashmap"
-		resultType="euserbean">
-		SELECT * FROM tbl_enterprisemember WHERE epUSERID=#{epuserid} AND epUSERPW=#{epuserpw}
-	</select>
 	
+	<select id="login" parameterType="hashmap" resultType="euserbean">
+		SELECT * FROM tbl_enterprisemember WHERE epuserid=#{epuserid} AND epuserpw=#{epuserpw}
+	</select>
 </mapper>

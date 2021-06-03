@@ -45,6 +45,7 @@ import com.koreait.action.ActionForward;
 			ActionForward forward = null;
 			
 			System.out.println("풋살컨트롤러 진입");
+			System.out.println("requestURI : "+ requestURI);
 			if(command.equals("/futsalFrontController/futsallist.fu")) {
 				System.out.println("풋살컨트롤러/풋살리스트 진입");
 				try {
@@ -67,7 +68,6 @@ import com.koreait.action.ActionForward;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
 			}else if(command.equals("/futsalFrontController/groundregistpage.fu")) {
 				try {
 					System.out.println("컨트롤러/구장등록페이지이동");
@@ -77,41 +77,30 @@ import com.koreait.action.ActionForward;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if(command.equals("/futsalFrontController/registlistLoad.fu")) {
-				try {
-					System.out.println("loadlist실행");
-					forward = new registlistLoadAction().execute(request, response);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}else if(command.equals("/futsalFrontController/registlistpage.fu")) {
 				try {
 					System.out.println("컨트롤러/구장등록리스트페이지이동");
-					forward = new ActionForward();
-					forward.setPath("/app/futsal/registlist.jsp");
-					forward.setRedirect(false);
+					forward = new registlistpageAction().execute(request,response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
-//			/futsalFrontController/registlistLoad.fu
-			
-			
-			
-			//풋살장에약페이지로 이동시 구장 정보 보여주는 컨트롤러
-			else if(command.equals("futsal/reservation.fu")) {
+			}else if(command.equals("/delList.fu")) {
 				try {
-					forward= new FutsalreservationAction().execute(request, response);
+					System.out.println("구장리스트삭제컨트롤러");
+					forward = new delListAction().execute(request, response);
 				} catch (Exception e) {
-					System.out.println("풋살예약페이지 구장정보 가져오는 컨트롤러");
 					e.printStackTrace();
 				}
-			}
-			else if (command.equals("futsal/reservationOk.fu")) {
+			}else if(command.equals("/reservation.fu")) {
 				try {
-					forward=new FutsalrservationOk().execute(request, response);
+					forward = new reservationAction().execute(request, response);
 				} catch (Exception e) {
-					System.out.println("풋살예약 페이지에서 예약하기 눌렀을 시");
+					e.printStackTrace();
+				}
+			}else if(command.equals("/loadHottime.fu")) {
+				try {
+					forward = new loadHottimeAction().execute(request, response);
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -127,3 +116,4 @@ import com.koreait.action.ActionForward;
 			}
 		}
 	}
+

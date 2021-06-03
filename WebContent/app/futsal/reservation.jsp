@@ -11,17 +11,11 @@
 <head>
 <title>Untitled</title>
 <meta charset="utf-8" />
-<meta name="viewport"
-   content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet"
-   href="${pageContext.request.contextPath}/assets/css/main.css" />
-<link rel="stylesheet"
-   href="${pageContext.request.contextPath}/assets/css/futsal/reservation.css" />
-   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/board.css" />
-<noscript>
-   <link rel="stylesheet" href="assets/css/noscript.css" />
-</noscript>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/futsal/reservation.css" />
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/board/board.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/futsal/calendar.css" />
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <style type="text/css"></style>
@@ -33,131 +27,93 @@
 	
    <!-- main -->
     <section id="main" class="wrapper sidebar left">
-        
         <div class="inner" id="reservationinner">
         
-
-            <div class="first">
-                <div>
-                    <img alt="" src="" class="container_img">
-                </div>
-            </div>
-        
-
-
-        
-            <div id = second>
+            <div id = first>
+                <div id = groundimg style="background-image: url('${pageContext.request.contextPath}/app/futsal/img/${groundinfo.imgrealname}');"></div>
                 <div id=groundinfo>
                     <h2>구장이름</h2>
-                        <div class = content>성남종합운동장</div>
+                        <div class = content>${groundinfo.groundname}</div>
                     <h2>주소</h2>
-                        <div class = content>경기도 성남시 </div>
-                    <h2>길찾기</h2>
-                        <div class = content>길찾기 api들어갈 자리</div>
-                </div>
-
-                <div id = hashtag>
-                    해쉬태그 넣을자리
+                        <div class = content>${groundinfo.useraddr}</div>
                 </div>
             </div>
         
 
 
-            <div id = third>
+            <div id = second>
                 <div class="calander">
                     <div id = calendarForm></div>
                 </div>
                 <div class="reservation">
-                    <table style="text-align: center;">
-                            <thead>
-                                <tr>
-                                	<td>선택</td>
-                                    <td>시간대</td>
-                                    <td>대관요금</td>
-                                    <td>대관상태</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                	
-                                <tr>
-                                    <td ><input type="checkbox" class="reservation_time" style=""> </td>
-                                    <td>00:00~02:00</td>
-                                    <td>95000</td>
-                                    <td>예약가능</td>
-                                </tr>
-                            </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="last">
-            	<div class="point">
-            			 <div class="p_point">풋살장 이용객을 위한 혜택</div>
-            			<div id = mile style="display: flex; width: 100%;">
-                    	<i class="fas fa-donate" style="font-size: 2em; margin-right: 10px;"></i>
-                    	<div style="width: 70%; ">적립금</div> 
-                    	<div style="width: 30%; text-align: right;">100원</div>
-                	</div>
-            	</div>
-            		<div id = reservebtn> 
-                <button type="button"><a href="#" class="reservationbtn">예약하기<a></button> 
+	               	<table>
+	               		<thead>
+	               			<tr>
+	               				<td>시간</td>
+	               				<td>요금</td>
+	               				<td>예약현황</td>
+	               			</tr>
+	               		</thead>
+	               		<tbody id = reservation></tbody>
+	               	</table>
+	            	<div id = payresult>결제금액</div>
+		            	<button onclick = "send()">예약하기</button>
+		            	<button onclick = "reset()">리셋</button>
+		            	
+		            	<form action=""></form>
+            		</div>
             </div>
             
             
-            
-            
-            
+            <div class="last" id = review>
+	            <div class="review wrapper">
+					<header class="major">
+						<h2>REVIEW</h2>
+						<p>다양한 후기로 더 꼼꼼히</p>
+					</header>
+	
+					<!-- Content -->
+					<div class="contents">
+						<table border="1">
+							<thead>
+								<tr>
+									<td>닉네임</td>
+									<td>제목</td>
+									<td>날짜</td>
+									<td>조회</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr onclick="location.href='/app/board/view.jsp'">
+									<td>PLAYER1</td>
+									<td>TITLE</td>
+									<td>2021-02-21</td>
+									<td>0회</td>
+								</tr>
+								<tr onclick="location.href='/app/board/view.jsp'">
+									<td>PLAYER1</td>
+									<td>TITLE</td>
+									<td>2021-03-05</td>
+									<td>0회</td>
+								</tr>
+								<tr onclick="location.href='/app/board/view.jsp'">
+									<td>PLAYER1</td>
+									<td>TITLE</td>
+									<td>2021-03-07</td>
+									<td>0회</td>
+								</tr>
+							</tbody>
+						</table>
+						<a href="/board/boardWrite.bo" class="small btn1">글쓰기</a>
+					</div>
+				</div>
             </div>
-            	
+         </div>
             
             
 			
 					 
-			<div class="review wrapper">
-				<header class="major">
-					<h2>REVIEW</h2>
-					<p>다양한 후기로 더 꼼꼼히</p>
-				</header>
-
-				<!-- Content -->
-				<div class="contents">
-					<table border="1">
-						<thead>
-							<tr>
-								<td>이미지</td>
-								<td>닉네임</td>
-								<td>제목</td>
-								<td>날짜</td>
-								<td>조회</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr onclick="location.href='/app/board/view.jsp'">
-								<td><img src="/images/review1.jpg" class="img"></td>
-								<td>PLAYER1</td>
-								<td>TITLE</td>
-								<td>2021-02-21</td>
-								<td>0회</td>
-							</tr>
-							<tr onclick="location.href='/app/board/view.jsp'">
-								<td><img src="/images/review2.jpg" class="img"></td>
-								<td>PLAYER1</td>
-								<td>TITLE</td>
-								<td>2021-03-05</td>
-								<td>0회</td>
-							</tr>
-							<tr onclick="location.href='/app/board/view.jsp'">
-								<td><img src="/images/review3.jpg" class="img"></td>
-								<td>PLAYER1</td>
-								<td>TITLE</td>
-								<td>2021-03-07</td>
-								<td>0회</td>
-							</tr>
-						</tbody>
-					</table>
-					<a href="/board/boardWrite.bo" class="small btn1">글쓰기</a>
-				</div>
-			</div>
-        </div>
+			
         
 	
     </section>
@@ -166,8 +122,117 @@
 </body>
 <script src="${pageContext.request.contextPath}/assets/js/futsal/calenderMaker.js"></script>
 <script>
-/*   */
+var payresult = 0;
+$(document).ready(function(){
+	var ctx = window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+	var groundnum = ${groundnum};
+	var select = '';
+	callAjax();
+	$("#calendarForm").on("click","td",function(){
+		var selectYear = $("#year").text();
+		var selectMonth = $("#month").text();
+		var selectDate = $(this).text();
+		select = selectYear+"."+(selectMonth.length==1?"0"+selectMonth:selectMonth)+"."+(selectDate.length==1?"0"+selectDate:selectDate);
+		console.log("click : "+select);
+		callAjax();
+	})
+	
+	$(".reservation").on("click","tr",function(){
+		if($(this).hasClass("checkedreservation") == true){
+			console.log("클래스있음");
+			$(this).removeClass("checkedreservation");
+			payresult -= parseInt($(this).find(".payinfo").text().substr(0,5));
+			$("#payresult").html(payresult);
+		}else{
+			console.log("클래스없음");
+			$(this).addClass("checkedreservation");
+			payresult += parseInt($(this).find(".payinfo").text().substr(0,5));
+			$("#payresult").html(payresult);
+		}
+	})
 
-
+	
+	function callAjax(){
+		$.ajax({
+			url : ctx+"/loadHottime.fu?groundnum="+groundnum+"&select="+select,
+			type : "get",
+			dataType:"JSON"
+		})
+		.done(function(data){
+			var tags = '';
+			var statusArr = new Array(12);
+			var feeArr = new Array(12);
+			payresult = 0;
+			$("#payresult").html(payresult);
+			console.log(data);
+			if(data.statusJson != null){
+				for (var k = 0; k < data.statusJson.length; k++) {
+					statusArr[data.statusJson[k].groundtime-1] ="예약불가"; 
+				}
+				for (var l = 0; l < statusArr.length; l++) {
+					if(statusArr[l] == null){
+						statusArr[l] = "예약가능";
+					}
+				}
+			}else{
+				for (var m = 0; m < statusArr.length; m++) {
+					statusArr[m] = "예약가능";
+				}
+			}
+			if(new Date(select).getDay() == 0 || new Date(select).getDay()==6){
+				for (var i = 0; i < data.json.length; i++) {
+					if(data.json[i].groundweek == 1){
+						feeArr[data.json[i].groundtime]=data.json[i].groundhottimefee;
+					}
+				}
+				for (var j = 0; j < feeArr.length;j++) {
+					if(statusArr[j] == "예약불가")continue;
+					tags += '<tr>'
+					tags += '<td>'+(((j+1)*2)-2)+'시~'+((j+1)*2)+'시 </td>'
+					if (feeArr[j] == null)tags += '<td class = payinfo>'+data.endBasicFee+'원 </td>';
+					else tags += '<td class = payinfo>'+feeArr[j]+'원 </td>';
+					tags += '<td class = status>'+statusArr[j]+'</td>'
+					tags += '</tr>'
+				}
+			}
+			
+			else{
+				for (var i = 0; i < data.json.length; i++) {
+					if(data.json[i].groundweek == 0){
+						feeArr[data.json[i].groundtime]=data.json[i].groundhottimefee;
+					}
+				}
+				
+				for (var j = 0; j < feeArr.length;j++) {
+					if(statusArr[j] == "예약불가")continue;
+					tags += '<tr>'
+					tags += '<td>'+(((j+1)*2)-2)+'시~'+((j+1)*2)+'시 </td>'
+					if (feeArr[j] == null)tags += '<td class = payinfo>'+data.dayBasicFee+'원 </td>';
+					else tags += '<td class = payinfo>'+feeArr[j]+'원 </td>';
+					tags += '<td class = status>'+statusArr[j]+'</td>'
+					tags += '</tr>'
+				}
+			}
+			$("#reservation").html(tags);
+			
+		})
+		.fail(function(xhr,error){
+			console.log("통신실패");
+			$(".contents").text(".fail");
+			console.log("code:"+xhr.status+"\n"+"message:"+xhr.responseText+"\n"+"error:"+error);
+		})
+	}
+	
+});
+function reset(){
+	console.log("리셋버튼클릭");
+	$(".reservation").find("tr").removeClass("checkedreservation");
+	console.log(payresult);
+	payresult = 0;
+	$("#payresult").html(payresult);
+}
+function send(){
+	
+}
 </script>
 </html>

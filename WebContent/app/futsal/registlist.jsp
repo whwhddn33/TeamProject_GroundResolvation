@@ -11,6 +11,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/main.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user/groundregist.css" />
+<link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="is-preload">
 	<!-- header -->
@@ -20,34 +21,58 @@
 		<div id="registlistinner" class="inner">
 			<div id=mainStringwrapper>
 				<div id=mainString>등록구장목록</div>
-				<a href="${pageContext.request.contextPath}/futsalFrontController/registlistLoad.fu?epuserid=whwhddn">리스트</a>
+				<a href="${pageContext.request.contextPath}/futsalFrontController/registlistLoad.fu?epuserid=${login_session.epuserid}">리스트</a>
 			</div>
-				<div class=contents></div>
+				<div class=contents>
+					<table>
+						<tr>
+							<th>번호</th>
+							<th>이미지</th>
+							<th>구장이름</th>
+							<th>주소</th>
+							<th>구장면적</th>
+							<th>해시태그</th>
+							<th>수정</th>
+						</tr>
+						<c:forEach varStatus="status" var="i" items="${loadlist}">
+							<tr>
+								<td>${status.count}</td>
+								<td><img alt="이미지없음" src="<%-- ${pageContext.request.contextPath}/app/futsal/img/${i.imgrealname} --%>"/></td>
+								<td>${i.groundname}</td>
+								<td>${i.useraddr}</td>
+								<td>${i.groundarea}</td>
+								<td>${i.hashTag}</td>
+								<td><a href = "${pageContext.request.contextPath}/delList.fu?listnum=${i.groundnum}&epuserid=${login_session.epuserid}">삭제</a></td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
 		</div>
 	</section>
-
+	
 
 
 </body>
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
+<script	src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+<script	src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 <script>
-$(document).ready(function() {
+/* $(document).ready(function() {
 	var epuserid = "${login_session.getEpuserid()}"
 	var tags = '';
 	var lastsign = 0;
+	var ctx = window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
 		$.ajax({
-			url : "${request.pageContext.contextPath}/futsalFrontController/registlistLoad.fu",
+			url : ctx+"/futsalFrontController/registlistLoad.fu",
 			type : "POST",
-			contentType : "application/json",
 			data : {"epuserid" : epuserid},
-			dataType : "text"
+			dataType : "json"
 		})
 		.done(function(data) {
-			data = JSON.parse(data);
 			console.log("통신성공");
 			console.log(data);
 			tagsStack(data, tags);
@@ -70,13 +95,14 @@ $(document).ready(function() {
 			tags +="<td>주소 : " + data.json[i].useraddr+ "</td>"
 			tags +="<td>구장면적 : "+ data.json[i].groundarea + "</td>"
 			tags +="<td>" + data.json[i].hashTag+ "</td>"
-			tags +="<td><button id = 'modifybtn' type = button>수정</button><button id = 'deletebtn' type = button>삭제</button></td>"
+			tags +="<td><a href = '${pageContext.request.contextPath}/delList.fu?listnum="+data.json[i].groundnum+"' id = 'deletebtn' type = button >삭제</a></td>";
 			tags +="</tr>"
 		}
 		tags +="</table>";
 		$(".contents").html(tags);
 	}
-});
+}); */
+
 </script>
 
 </html>

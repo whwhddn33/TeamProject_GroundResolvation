@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.koreait.action.Action;
 import com.koreait.action.ActionForward;
-import com.koreait.app.futsalDAO.FutsalBean;
 import com.koreait.app.futsalDAO.FutsalDAO;
-
-
+import com.koreait.app.futsalDAO.GroundInfoBean;
 
 public class FutsallistLoadAction implements Action{
 
@@ -25,9 +23,9 @@ public class FutsallistLoadAction implements Action{
 		int tryCount = Integer.parseInt(String_tryCount);
 		System.out.println(tryCount);
 		
-		List<FutsalBean> loadlist = fdao.getgroundlist(tryCount);
+		List<GroundInfoBean> loadlist = fdao.getgroundlist(tryCount);
 		System.out.println(loadlist);
-		for (FutsalBean i : loadlist) {
+		for (GroundInfoBean i : loadlist) {
 			System.out.println(i.getGroundnum());
 			System.out.println(i.getGroundname());
 		}

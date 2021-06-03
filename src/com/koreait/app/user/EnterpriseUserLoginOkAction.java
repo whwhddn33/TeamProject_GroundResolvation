@@ -19,13 +19,15 @@ public class EnterpriseUserLoginOkAction implements Action{
 		EnterpriseUserDAO eudao = new EnterpriseUserDAO();
 		HttpSession session = request.getSession();
 		
-		String userid = request.getParameter("epuserid");
-		String userpw = request.getParameter("epuserpw");
-		EnterpriseUserBean loginUser = eudao.login(userid, userpw);
-		
+		String epuserid = request.getParameter("epuserid");
+		String epuserpw = request.getParameter("epuserpw");
+		System.out.println("userid : " + epuserid);
+		System.out.println("userpw : " + epuserpw);
+		EnterpriseUserBean loginUser = eudao.login(epuserid, epuserpw);
 		if (loginUser != null) {
 			session.setAttribute("login_session", loginUser);
 			session.setAttribute("enterprisenumber", loginUser.getEpusernumber());
+			
 			forward.setPath(request.getContextPath()+"/");
 		}else {
 			forward.setPath(request.getContextPath()+"/app/user/loginView.me"); 

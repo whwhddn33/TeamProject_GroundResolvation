@@ -4,11 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Futsal">
 	<select id="loadlist" parameterType="hashmap"
-		resultType="futsalBean">
+		resultType="GroundInfoBean">
 		SELECT * FROM
 		(SELECT ROWNUM r, a.* FROM
 		(SELECT * FROM
-		TBL_GROUND
+		TBL_GROUNDINFO
 		ORDER BY GROUNDNUM) a) b
 		WHERE b.r BETWEEN ${startNum} AND ${endNum}
 	</select>
@@ -29,7 +29,7 @@
 		TBL_GROUNDINFO
 		VALUES(seq_groundnum.nextval, #{epuserid}, #{groundname}, #{groundarea}, #{userpostcode},
 		#{useraddr}, #{useraddrdetail}, #{useraddretc}, #{hashTag},
-		#{weekDayBasicFee}, #{weekEndBasicFee})
+		#{weekDayBasicFee}, #{weekEndBasicFee},#{imgname},#{imgrealname})
 		
 	</insert>
 
@@ -48,7 +48,25 @@
 	VALUES(seq_groundfeenum.nextval, seq_groundnum.CURRVAL, 1, #{weekEndtime}, #{weekEndHotTimeFee})
 	
 	</insert>
+	
+	<delete id="delList" parameterType="String">
+		DELETE FROM TBL_GROUNDINFO WHERE GROUNDNUM = #{listnum}
+	</delete>
 
-
+	<delete id="delHottime" parameterType="String">
+		DELETE FROM TBL_GROUNDHOTTIME WHERE GROUNDNUM = #{listnum}
+	</delete>
+	
+	<select id="getinfo" parameterType="String" resultType="GroundInfoBean">
+		select * from tbl_groundInfo where groundnum = #{groundnum}
+	</select>
+	
+	<select id="getHottime" parameterType="String" resultType="HottimeBean">
+		select * from tbl_groundHottime where groundnum = #{groundnum}
+	</select>
+	
+	<select id = "getstatus" parameterType = "usageStatusBean" resultType="usageStatusBean">
+		SELECT * FROM tbl_usagstatus WHERE groundnum = #{groundnum} AND reservationdate = #{reservationdate}
+	</select>
+	
 </mapper>
-

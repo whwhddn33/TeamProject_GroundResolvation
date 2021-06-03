@@ -66,6 +66,28 @@
 								</c:choose>
 							</tbody>
 						</table>
+							<div align="center">
+								<ul class="pagination">
+										<li>
+											<c:choose>
+												<c:when test="${nowPage>1}">
+													<a href="${pageContext.request.contextPath}/team/TeamList.te?page=${nowPage-1}" class="button">이전</a>
+												</c:when>
+											</c:choose> <c:forEach var="i" begin="${startPage}" end="${endPage}">
+											<c:choose>
+												<c:when test="${i == nowPage }">
+														[${i}]
+													</c:when>
+												<c:otherwise>
+													<a href="${pageContext.request.contextPath}/team/TeamList.te?page=${i}" class="page active">${i}</a>
+												</c:otherwise>
+											</c:choose>
+											</c:forEach> <c:if test="${nowPage<totalPage}">
+												<a href="${pageContext.request.contextPath}/team/TeamList.te?page=${nowPage+1}" class="button">다음</a>
+											</c:if>
+										</li>
+								</ul>
+							</div>	
 						<a href="${pageContext.request.contextPath}/board/boardWrite.bo?num=${category}" class="small btn1">글쓰기</a>
 					</div>
 				</div>

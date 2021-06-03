@@ -40,8 +40,7 @@
 									<td class="hideTr">
 										<div>
 											A. 카카오톡 채널로 아래의 내용을 작성해서 보내주시면 확인 후 안내해 드립니다.<br><br>
-											예약한 구장의 환불 규정을 먼저 확인 후 문의해주세요<br><br>
-											카카오톡 검색 : 아이엠그라운드<br>
+											예약한 구장의 환불 규정을 먼저 확인 후 문의해주세요<br>
 											(평일, 주말 10시 ~ 23시)<br><br>
 											- 예약 구장 : <br>
 											- 예약 날짜, 시간 : <br> 
@@ -65,7 +64,7 @@
 											2) 구장 선택<br>
 											3) 구장 사진 클릭<br>
 											4) 아래 환불규정, 변경규정 확인하기<br>
-										</div>  
+										</div>
 									</td>
 								</tr>
 								<tr>
@@ -73,7 +72,7 @@
 									<td class="hideTr">
 										<div>
 											A. 구장 연락처는 예약이 확정되면 카카오톡으로 자동 안내 됩니다.
-										</div>  
+										</div>
 									</td>
 								</tr>
 							</tbody>
@@ -95,12 +94,12 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/jquery.dropotron.min.js"></script>
-			<script src="/assets/js/jquery.scrollex.min.js"></script>
-			<script src="/assets/js/browser.min.js"></script>
-			<script src="/assets/js/breakpoints.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 	</body>
 </html>

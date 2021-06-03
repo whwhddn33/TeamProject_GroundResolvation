@@ -28,6 +28,8 @@ public class BoardWriteOkAction implements Action{
 		boolean bchk = false;
 		boolean fchk = false;
 		
+		
+		
 		ActionForward forward = new ActionForward();
 		MultipartRequest multi = new MultipartRequest(request, folder,size,"UTF-8",new DefaultFileRenamePolicy());
 		String filename = multi.getFilesystemName("file");

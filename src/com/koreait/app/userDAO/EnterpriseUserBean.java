@@ -1,6 +1,7 @@
 package com.koreait.app.userDAO;
 
 public class EnterpriseUserBean {
+	private String userid;
 	private String epuserid;
 	private String epuserpw;
 	private String epusername;
@@ -9,6 +10,14 @@ public class EnterpriseUserBean {
 	
 	public EnterpriseUserBean() {};
 	
+	
+	
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	public String getEpuserid() {
 		return epuserid;
 	}

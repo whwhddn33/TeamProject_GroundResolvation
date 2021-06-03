@@ -66,7 +66,7 @@ function calendarMaker(target, date) {
             "</colgroup>" +
             "<thead class='cal_date'>" +
             "<th><button type='button' class='prev'><</button></th>" +
-            "<th colspan='5'><p><span>" + year + "</span>년 <span id = month>" + month + "</span>월</p></th>" +
+            "<th colspan='5'><p><span id = year>" + year + "</span>년 <span id = month>" + month + "</span>월</p></th>" +
             "<th><button type='button' class='next'>></button></th>" +
             "</thead>" +
             "<thead  class='cal_week'>" +

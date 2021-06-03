@@ -144,7 +144,7 @@ public class FutsalDAO {
 		return sb.toString();
 	}
 
-	public List<FutsalBean> getgroundlist(int tryCount) {
+	public List<GroundInfoBean> getgroundlist(int tryCount) {
 		
 		int startNum = (10*tryCount)-9;
 		int endNum = (startNum+9);
@@ -155,15 +155,15 @@ public class FutsalDAO {
 		HashMap<String, Integer> datas = new HashMap<>();
 		datas.put("startNum", startNum);
 		datas.put("endNum", endNum);
-		List<FutsalBean> loadlist = sqlsession.selectList("Futsal.loadlist",datas);
+		List<GroundInfoBean> loadlist = sqlsession.selectList("Futsal.loadlist",datas);
 		return loadlist;
+		
 	}
 	
 	
 	
-	public GroundInfoBean getinfo(int groundnum) {
-			GroundInfoBean info= new GroundInfoBean();
-		return sqlsession.selectOne("Futsal.getinfo", info);
+	public GroundInfoBean getinfo(String groundnum) {
+		return sqlsession.selectOne("Futsal.getinfo", groundnum);
 	}
 	
 	public int insertgroundinfo(GroundInfoBean ginfobean) {
@@ -179,6 +179,18 @@ public class FutsalDAO {
 	public List<GroundInfoBean> getregistlist(String epuserid) {
 		List<GroundInfoBean> loadlist = sqlsession.selectList("Futsal.registloadlist",epuserid);
 		return loadlist;
+	}
+	public int delList(String listNum) {
+		return sqlsession.delete("Futsal.delList",listNum);
+	}
+	public int delhottime(String listNum) {
+		return sqlsession.delete("Futsal.delHottime",listNum);
+	}
+	public List<GroundHotTimeBean> gethottime(String groundnum) {
+		return sqlsession.selectList("Futsal.getHottime",groundnum);
+	}
+	public List<usageStatusBean> getReservation(usageStatusBean ubean) {
+		return sqlsession.selectList("Futsal.getstatus",ubean);
 	}
 	
 }
