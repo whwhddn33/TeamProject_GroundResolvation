@@ -145,7 +145,6 @@ public class FutsalDAO {
 	}
 
 	public List<GroundInfoBean> getgroundlist(int tryCount) {
-		
 		int startNum = (10*tryCount)-9;
 		int endNum = (startNum+9);
 		System.out.print("startNum : ");
@@ -157,7 +156,6 @@ public class FutsalDAO {
 		datas.put("endNum", endNum);
 		List<GroundInfoBean> loadlist = sqlsession.selectList("Futsal.loadlist",datas);
 		return loadlist;
-		
 	}
 	
 	
@@ -191,6 +189,29 @@ public class FutsalDAO {
 	}
 	public List<usageStatusBean> getReservation(usageStatusBean ubean) {
 		return sqlsession.selectList("Futsal.getstatus",ubean);
+	}
+	public int insertReservation(HashMap<String, String> reservationInfo) {
+		return sqlsession.insert("Futsal.insertReservation",reservationInfo);
+	}
+
+	public int curReservation() {
+		return sqlsession.selectOne("Futsal.returnseq");
+	}
+	public int InsertUsagstatus(usageStatusBean ubean) {
+		return sqlsession.insert("Futsal.insertUsagstatus",ubean);
+	}
+	public int statusCheck(HashMap<String, String> check) {
+		return sqlsession.selectOne("Futsal.statusCheck",check);
+	}
+
+	public Integer getPay(HashMap<String, String> checkInfo) {
+		return sqlsession.selectOne("Futsal.getPay",checkInfo);
+	}
+	public int getWDBasicFee(String groundnum) {
+		return sqlsession.selectOne("Futsal.getWDB",groundnum);
+	}
+	public int getWEBasicFee(String groundnum) {
+		return sqlsession.selectOne("Futsal.getWEB",groundnum);
 	}
 	
 }

@@ -36,7 +36,7 @@ public class loadHottimeAction implements Action{
 		
 		usageStatusBean ubean = new usageStatusBean();
 		
-		ubean.setGroundnum(groundnum);
+		ubean.setGroundnum(Integer.parseInt(groundnum));
 		ubean.setReservationdate(select);
 		fdao.getReservation(ubean);
 		List<usageStatusBean> Status = fdao.getReservation(ubean);

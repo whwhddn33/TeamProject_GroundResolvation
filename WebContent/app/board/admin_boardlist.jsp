@@ -8,7 +8,7 @@
 	<title>게시물 관리하기</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="/assets/css/main.css" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" />
 	<link href="${pageContext.request.contextPath}/assets/css/user/indexBox.css" type="text/css" rel="stylesheet" />
 </head>
 <body class="is-preload">
@@ -42,7 +42,7 @@
 								<c:choose>
 									<c:when test="${list != null and fn:length(list) > 0 }">
 										<c:forEach var="board" items="${list}">
-											<tr onclick="location.href='/admin/adminView.bo?num=${board.getListnum()}'">
+											<tr onclick="location.href='${pageContext.request.contextPath}/admin/adminView.bo?num=${board.getListnum()}'">
 												<td>${board.getListnum() }</td>
 												<td>${board.getListtitle() }</td>
 												<td>${board.getUsernum() }</td>
@@ -71,12 +71,12 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/jquery.dropotron.min.js"></script>
-			<script src="/assets/js/jquery.scrollex.min.js"></script>
-			<script src="/assets/js/browser.min.js"></script>
-			<script src="/assets/js/breakpoints.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.dropotron.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/jquery.scrollex.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/browser.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/breakpoints.min.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/util.js"></script>
+			<script src="${pageContext.request.contextPath}/assets/js/main.js"></script>
 	</body>
 </html>

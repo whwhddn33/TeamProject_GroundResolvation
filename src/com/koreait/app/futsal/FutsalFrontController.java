@@ -54,7 +54,7 @@ import com.koreait.action.ActionForward;
 					System.out.println("/futsal/futsallist.fu 오류");
 					System.out.println(e);
 				}
-			}else if(command.equals("/futsalFrontController/futsallistLoad.fu")) {
+			}else if(command.equals("/futsallistLoad.fu")) {
 				try {
 					forward = new FutsallistLoadAction().execute(request, response);
 				} catch (Exception e) {
@@ -100,6 +100,12 @@ import com.koreait.action.ActionForward;
 			}else if(command.equals("/loadHottime.fu")) {
 				try {
 					forward = new loadHottimeAction().execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if(command.equals("/reservationRegist.fu")) {
+				try {
+					forward = new reservationRegistAction().execute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

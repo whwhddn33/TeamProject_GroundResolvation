@@ -52,13 +52,13 @@ $(document).ready(function(){
 		//
 		var selectMonth = month<10?'0'+month:month;
 			selectYear = year,
-			selectDate = ''.concat(selectYear,selectMonth,selectDay);
+			selectDate = ''.concat(selectYear+'.',selectMonth+'.',selectDay);
 
 		// 스크립트 contextPath
 		var ctx = window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
 		
 		$.ajax({
-			url : ctx+"/futsalFrontController/futsallistLoad.fu",
+			url : ctx+"/futsallistLoad.fu",
 			type : "get",
 			data: {"selectDate":selectDate , "tryCount" : tryCount},
 			dataType:"JSON"

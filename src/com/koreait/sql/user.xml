@@ -7,7 +7,7 @@
   
 	<insert id="join" parameterType="userbean">
 			INSERT INTO TBL_MEMBER
-			VALUES(#{userid},#{userpw},#{username},#{usergender},#{userphone},#{userpostcode},#{useraddr},#{useraddrdetail},#{useraddretc},)
+			VALUES(#{userid},#{userpw},#{username},#{usergender},#{userphone},#{userpostcode},#{useraddr},#{useraddrdetail},#{useraddretc})
 	</insert>
 	
 	<select id="login" parameterType="hashmap" resultType="userbean">

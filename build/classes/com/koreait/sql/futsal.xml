@@ -69,4 +69,36 @@
 		SELECT * FROM tbl_usagstatus WHERE groundnum = #{groundnum} AND reservationdate = #{reservationdate}
 	</select>
 	
+	<insert id="insertReservation" parameterType="hashmap">
+		INSERT INTO TBL_RESERVATION
+		(RESERVATIONNUM, USERID, GROUNDTIME, RESERVATIONDATE, RESERVATIONPAY, PAYDATE)
+		VALUES(seq_reservation.nextval, #{userid}, #{reserInfo}, #{select}, #{pay}, SYSDATE)
+	</insert>
+	
+	<select id="returnseq" resultType="_int">
+		select seq_reservation.currval from dual
+	</select>
+	
+	<insert id="insertUsagstatus" parameterType="usageStatusBean">
+		INSERT INTO TBL_USAGSTATUS
+		(STATUSNUM, GROUNDNUM, GROUNDTIME, RESERVATIONNUM, RESERVATIONDATE)
+		VALUES(seq_usagstatus.nextval, ${groundnum}, #{groundtime}, #{reservationnum}, #{reservationdate})
+	</insert>
+	
+	<select id="statusCheck" parameterType="hashmap" resultType="_int">
+	SELECT count(GROUNDTIME) FROM tbl_usagstatus WHERE groundnum = #{groundnum} AND reservationDate = #{date}
+	</select>
+	
+	<select id="getPay" parameterType="hashmap" resultType="Integer">
+		SELECT GROUNDHOTTIMEFEE FROM TBL_GROUNDHOTTIME WHERE GROUNDNUM = #{groundnum} AND GROUNDWEEK = ${weekCode} AND GROUNDTIME = #{groundtime}
+	</select>
+	
+	<select id="getWDB" parameterType="String" resultType="_int">
+		select WEEKDAYBASICFEE from tbl_groundInfo where groundnum = #{groundnum}
+	</select>
+	
+	<select id="getWEB" parameterType="String" resultType="_int">
+		select WEEKENDBASICFEE from tbl_groundInfo where groundnum = #{groundnum}
+	</select>
+	
 </mapper>
