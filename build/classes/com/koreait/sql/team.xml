@@ -43,7 +43,7 @@
 	</update>
 	<insert id="insertTeamMember">
 		INSERT INTO TBL_TEAMLIST
-		VALUES(seq_teamlist.nextval, ${teamNo} ,#{username} ,#{nickname} ,#{userheight} ,#{userweight} ,#{usefoot} ,#{mainposition} ,#{minorposition} ,#{usertel})
+		VALUES(${teamNo} ,#{username} ,#{nickname} ,#{userheight} ,#{userweight} ,#{usefoot} ,#{mainposition} ,#{minorposition} ,#{usertel})
 	</insert>
 	
 	<select id="getTeamMember" parameterType="String" resultType="teamlistBean">

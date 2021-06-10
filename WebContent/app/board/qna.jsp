@@ -28,8 +28,7 @@
 			<section id="main" class="wrapper qna">
 				<div class="inner">
 					<header class="major">
-						<h2>1:1 문의하기</h2>
-						<p>구매 전 확인하기</p>
+						<h2>자유게시판</h2>
 					</header>
 
 					<!-- Content -->

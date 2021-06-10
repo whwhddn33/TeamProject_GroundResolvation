@@ -20,13 +20,13 @@ public class FutsallistAction implements Action{
 		
 		FutsalDAO fdao = new FutsalDAO();
 		
-		String getDangi = fdao.getDangi();
-		String getJungi = fdao.getJungi();
-		String updateTime = fdao.updateTime();
-		
-		request.setAttribute("getDangi", getDangi);
-		request.setAttribute("getJungi", getJungi);
-		request.setAttribute("updateTime", updateTime);
+//		String getDangi = fdao.getDangi();
+//		String getJungi = fdao.getJungi();
+//		String updateTime = fdao.updateTime();
+//		
+//		request.setAttribute("getDangi", getDangi);
+//		request.setAttribute("getJungi", getJungi);
+//		request.setAttribute("updateTime", updateTime);
 		
 		forward.setRedirect(false);
 		forward.setPath("/app/futsal/futsallist.jsp");

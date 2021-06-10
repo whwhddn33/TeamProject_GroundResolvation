@@ -26,7 +26,7 @@ public class BoardDAO {
 		System.out.println("List<ListBean> getBoardList 실행");
 		HashMap<String,Object> data = new HashMap<>();
 		data.put("startRow",startRow);
-		data.put("endRow", 100);
+		data.put("endRow", 10);
 		data.put("category", category);
 		List<ListBean> BoardList = sqlsession.selectList("Board.BoardListAll",data);
 		System.out.println(BoardList);

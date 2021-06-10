@@ -29,7 +29,7 @@
 		(SELECT * FROM
 		TBL_LIST
 		WHERE BOARDNUM = #{category}
-		ORDER BY LISTNUM) a) b
+		ORDER BY LISTNUM desc) a) b
 		WHERE b.r BETWEEN ${startRow} AND ${endRow}
 	</select>
 	
